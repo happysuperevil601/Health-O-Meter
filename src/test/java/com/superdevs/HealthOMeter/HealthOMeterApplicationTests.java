@@ -74,7 +74,7 @@ class HealthOMeterApplicationTests {
 		//Act
 		BigDecimal result = calculatorService.getCalculateRFM(sex, height, waist);
 		//Assert
-		Assertions.assertEquals(expectedResult, result);
+		Assertions.assertEquals(0, result.compareTo(expectedResult));
 	}
 
 	@Test
@@ -87,7 +87,7 @@ class HealthOMeterApplicationTests {
 		//Act
 		BigDecimal result = calculatorService.getCalculateRFM(sex, height, waist);
 		//Assert
-		Assertions.assertEquals(expectedResult, result);
+		Assertions.assertEquals(0, result.compareTo(expectedResult));
 	}
 
 	@Test
@@ -100,6 +100,6 @@ class HealthOMeterApplicationTests {
 		//Act
 		BigDecimal result = calculatorService.getCalculateRFM(sex, height, waist);
 		//Assert
-		Assertions.assertEquals(expectedResult, result);
+		Assertions.assertEquals(0, result.compareTo(expectedResult));
 	}
 }
