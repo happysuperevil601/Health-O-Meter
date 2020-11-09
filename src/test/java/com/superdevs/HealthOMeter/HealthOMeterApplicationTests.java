@@ -3,14 +3,12 @@ package com.superdevs.HealthOMeter;
 
 import com.superdevs.HealthOMeter.service.CalculatorService;
 import com.superdevs.HealthOMeter.service.managers.CalculatorManager;
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 
 import java.math.BigDecimal;
 
@@ -64,5 +62,44 @@ class HealthOMeterApplicationTests {
 		BigDecimal result = calculatorService.getCalculateWHR(waist,hip);
 		//Assert
 		Assertions.assertEquals(expectedScore, result);
+	}
+
+	@Test
+	void testCalculatorServiceForRfmForFemale() {
+		//Arrange
+		String sex = "female";
+		BigDecimal height = new BigDecimal("168.90");
+		BigDecimal waist = new BigDecimal("72");
+		BigDecimal expectedResult = new BigDecimal("29.1");
+		//Act
+		BigDecimal result = calculatorService.getCalculateRFM(sex, height, waist);
+		//Assert
+		Assertions.assertEquals(expectedResult, result);
+	}
+
+	@Test
+	void testCalculatorServiceForRfmMale() {
+		//Arrange
+		String sex = "male";
+		BigDecimal height = new BigDecimal("168.90");
+		BigDecimal waist = new BigDecimal("72");
+		BigDecimal expectedResult = new BigDecimal("17.1");
+		//Act
+		BigDecimal result = calculatorService.getCalculateRFM(sex, height, waist);
+		//Assert
+		Assertions.assertEquals(expectedResult, result);
+	}
+
+	@Test
+	void testCalculatorServiceForRfmZero() {
+		//Arrange
+		String sex = "male";
+		BigDecimal height = new BigDecimal("168.90");
+		BigDecimal waist = new BigDecimal("0");
+		BigDecimal expectedResult = BigDecimal.ZERO;
+		//Act
+		BigDecimal result = calculatorService.getCalculateRFM(sex, height, waist);
+		//Assert
+		Assertions.assertEquals(expectedResult, result);
 	}
 }

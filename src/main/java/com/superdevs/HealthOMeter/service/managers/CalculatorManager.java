@@ -29,4 +29,19 @@ public class CalculatorManager {
         return waistRatio.divide(hipRatio, mathContext);
     }
 
+    public BigDecimal calculateRFM(String sex, BigDecimal height, BigDecimal waistRatio) {
+        MathContext mathContext = new MathContext(3);
+
+        if (sex != null && height != null && waistRatio!= null
+                && height.compareTo(BigDecimal.ZERO) > 0 && waistRatio.compareTo(BigDecimal.ZERO) > 0
+                && (sex.equalsIgnoreCase("male") || sex.equalsIgnoreCase("female"))) {
+            BigDecimal partialResult = new BigDecimal("20").multiply(height).divide(waistRatio, mathContext);
+            if (sex.equalsIgnoreCase("male")) {
+                return  new BigDecimal("64").subtract(partialResult);
+            } else if (sex.equalsIgnoreCase("female")) {
+                return new BigDecimal("76").subtract(partialResult);
+            }
+        }
+        return BigDecimal.ZERO;
+    }
 }
