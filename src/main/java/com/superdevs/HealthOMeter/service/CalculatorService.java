@@ -17,7 +17,10 @@ public class CalculatorService {
     }
 
     public BigDecimal getCalculateWHR(BigDecimal waistRatio, BigDecimal hipRatio) {
-
         return calculatorManager.calculateWhr(waistRatio, hipRatio);
-}
+    }
+
+    public BigDecimal getCalculateRFM(String sex, BigDecimal height, BigDecimal waistRatio) {
+        return calculatorManager.calculateRFM(sex, height, waistRatio);
+    }
 }
