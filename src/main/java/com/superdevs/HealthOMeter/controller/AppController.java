@@ -12,10 +12,12 @@ public class AppController {
     @Autowired
     UserService userService;
 
+    //to do - update; we have to switch from Thymeleaf
+    /*
     @RequestMapping("/signup")
     public ModelAndView signup() {
         return new ModelAndView("registration", "user", new User());
-    }
+    }*/
 
     @RequestMapping("/register")
     public ModelAndView register(User user) {

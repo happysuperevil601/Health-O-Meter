@@ -1,6 +1,6 @@
 package com.superdevs.HealthOMeter.config;
 
-import com.superdevs.HealthOMeter.entity.Authorities_Users;
+import com.superdevs.HealthOMeter.entity.AuthoritiesUsers;
 import com.superdevs.HealthOMeter.entity.Authority;
 import com.superdevs.HealthOMeter.entity.User;
 import com.superdevs.HealthOMeter.repository.AuthoritiesUsersRepo;
@@ -64,11 +64,11 @@ public class Start {
         Optional<Authority> userAuthorities = authorityRepo.findByAuthority("ROLE_USER");
         Optional<Authority> adminUthorities = authorityRepo.findByAuthority("ROLE_ADMIN");
 
-        Authorities_Users darek_user= new Authorities_Users();
+        AuthoritiesUsers darek_user= new AuthoritiesUsers();
         darek_user.setAuthority_id(userAuthorities.get().getId());
         darek_user.setUser_id(user.get().getId());
 
-        Authorities_Users iza_admin = new Authorities_Users();
+        AuthoritiesUsers iza_admin = new AuthoritiesUsers();
         iza_admin.setAuthority_id(adminUthorities.get().getId());
         iza_admin.setUser_id(admin.get().getId());
 

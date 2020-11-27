@@ -2,7 +2,9 @@ package com.superdevs.HealthOMeter.entity;
 
 import javax.persistence.*;
 import java.util.Set;
-
+/*
+Contact or User - discussion
+ */
 @Entity(name = "users")
 public class User {
     @Id
