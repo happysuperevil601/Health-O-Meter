@@ -14,7 +14,7 @@ public class BMIData {
 
     @ManyToOne
     @JoinColumn(name = "contact_id")
-    private Contact contacts;
+    private Contact contact;
 
     @Column(name = "result")
     private BigDecimal result;
@@ -25,19 +25,19 @@ public class BMIData {
     public BMIData() {
     }
 
-    public BMIData(long id, Contact contacts, BigDecimal result) {
+    public BMIData(long id, Contact contact, BigDecimal result) {
         this.id = id;
-        this.contacts = contacts;
+        this.contact = contact;
         this.result = result;
-        this.created =  LocalDateTime.now();
+        this.created = LocalDateTime.now();
     }
 
     public long getId() {
         return id;
     }
 
-    public Contact getContacts() {
-        return contacts;
+    public Contact getcontact() {
+        return contact;
     }
 
     public BigDecimal getResult() {
@@ -52,8 +52,8 @@ public class BMIData {
         this.id = id;
     }
 
-    public void setContacts(Contact contacts) {
-        this.contacts = contacts;
+    public void setcontact(Contact contact) {
+        this.contact = contact;
     }
 
     public void setResult(BigDecimal result) {

@@ -11,8 +11,9 @@ public class MedicalData {
     @Column(name = "id")
     private long id;
 
-    @OneToOne(mappedBy = "medicalData")
-    private Contact contacts;
+    @ManyToOne
+    @JoinColumn(name = "contact_id")
+    private Contact contact;
 
     @Column(name = "created")
     private LocalDateTime created;
@@ -20,9 +21,9 @@ public class MedicalData {
     public MedicalData() {
     }
 
-    public MedicalData(long id, Contact contacts) {
+    public MedicalData(long id, Contact contact) {
         this.id = id;
-        this.contacts = contacts;
+        this.contact = contact;
         this.created = LocalDateTime.now();
     }
 
@@ -30,8 +31,8 @@ public class MedicalData {
         return id;
     }
 
-    public Contact getContacts() {
-        return contacts;
+    public Contact getContact() {
+        return contact;
     }
 
     public LocalDateTime getCreated() {
@@ -42,8 +43,8 @@ public class MedicalData {
         this.id = id;
     }
 
-    public void setContacts(Contact contacts) {
-        this.contacts = contacts;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public void setCreated(LocalDateTime created) {

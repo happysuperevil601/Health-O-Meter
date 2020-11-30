@@ -13,7 +13,7 @@ public class HistoricalMedicalData {
 
     @ManyToOne
     @JoinColumn(name = "contact_id")
-    private Contact contacts;
+    private Contact contact;
 
     @Column(name = "createde")
     private LocalDateTime createde;
@@ -21,9 +21,9 @@ public class HistoricalMedicalData {
     public HistoricalMedicalData() {
     }
 
-    public HistoricalMedicalData(long id, Contact contacts) {
+    public HistoricalMedicalData(long id, Contact contact) {
         this.id = id;
-        this.contacts = contacts;
+        this.contact = contact;
         this.createde = LocalDateTime.now();
     }
 
@@ -31,8 +31,8 @@ public class HistoricalMedicalData {
         return id;
     }
 
-    public Contact getContacts() {
-        return contacts;
+    public Contact getContact() {
+        return contact;
     }
 
     public LocalDateTime getCreatede() {
@@ -43,8 +43,8 @@ public class HistoricalMedicalData {
         this.id = id;
     }
 
-    public void setContacts(Contact contacts) {
-        this.contacts = contacts;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public void setCreatede(LocalDateTime createde) {

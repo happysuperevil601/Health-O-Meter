@@ -1,12 +1,11 @@
 package com.superdevs.HealthOMeter.entity;
 
-import javax.validation.constraints.NotBlank;
-
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Entity(name = "contacts")
+@Entity(name = "contact")
 public class Contact {
 
     @Id
@@ -14,48 +13,40 @@ public class Contact {
     @Column(name = "id")
     private long id;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contacts")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact")
     private Set<BioMetricData> bioMetricData;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contacts")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact")
     private Set<BioMetricHistoricalData> bioMetricHistoricalData;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contacts")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact")
     private Set<BMIData> bmiData;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contacts")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact")
     private Set<WHRData> whrData;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contacts")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact")
     private Set<RFMData> rfmData;
 
-    @ManyToMany
-    @JoinTable(
-            name = "historicalcalculatorsresults_contact",
-            joinColumns = @JoinColumn(name = "contact_id"),
-            inverseJoinColumns = @JoinColumn(name = "historicalcalculatorsresults_id")    )
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact")
     private Set<HistoricalCalculatorsResults> historicalCalculatorsResults;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "medicaldata_id", referencedColumnName = "id")
-    private MedicalData medicalData;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact")
+    private Set<MedicalData> medicalData;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contacts")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact")
     private Set<HistoricalMedicalData> historicalMedicalData;
 
     @Column(name = "first_name")
-    @NotBlank(message = "First name must not be null or empty!")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
-    @NotBlank(message = "Email must not be null or empty!")
+    @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name = "nick_name")
-    @NotBlank(message = "Nick name must not be null or empty!")
+    @Column(name = "nick_name", unique = true)
     private String nickName;
 
     @Column(name = "country")
@@ -73,25 +64,28 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(long id, String firstName, String email, String nickName) {
+    public Contact(long id, Set<BioMetricData> bioMetricData, Set<BioMetricHistoricalData> bioMetricHistoricalData,
+                   Set<BMIData> bmiData, Set<WHRData> whrData, Set<RFMData> rfmData,
+                   Set<HistoricalCalculatorsResults> historicalCalculatorsResults, Set<MedicalData> medicalData,
+                   Set<HistoricalMedicalData> historicalMedicalData, String firstName, String lastName,
+                   String email, String nickName, String country, String city) {
         this.id = id;
-        this.firstName = firstName;
-        this.email = email;
-        this.nickName = nickName;
-        this.created = LocalDateTime.now();
-    }
-
-    public Contact(long id, String firstName, String lastName, String email,
-                   String nickName, String country, String city, LocalDateTime updated) {
-        this.id = id;
+        this.bioMetricData = bioMetricData;
+        this.bioMetricHistoricalData = bioMetricHistoricalData;
+        this.bmiData = bmiData;
+        this.whrData = whrData;
+        this.rfmData = rfmData;
+        this.historicalCalculatorsResults = historicalCalculatorsResults;
+        this.medicalData = medicalData;
+        this.historicalMedicalData = historicalMedicalData;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.nickName = nickName;
         this.country = country;
         this.city = city;
-        this.created =  LocalDateTime.now();;
-        this.updated = updated;
+        this.created = LocalDateTime.now();
+        this.updated = LocalDateTime.now();
     }
 
     public long getId() {
@@ -122,7 +116,7 @@ public class Contact {
         return historicalCalculatorsResults;
     }
 
-    public MedicalData getMedicalData() {
+    public Set<MedicalData> getMedicalData() {
         return medicalData;
     }
 
@@ -190,7 +184,7 @@ public class Contact {
         this.historicalCalculatorsResults = historicalCalculatorsResults;
     }
 
-    public void setMedicalData(MedicalData medicalData) {
+    public void setMedicalData(Set<MedicalData> medicalData) {
         this.medicalData = medicalData;
     }
 

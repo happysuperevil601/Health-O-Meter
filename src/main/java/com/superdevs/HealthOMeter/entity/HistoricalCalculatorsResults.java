@@ -3,7 +3,6 @@ package com.superdevs.HealthOMeter.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity(name = "historicalcalculatorsresults")
 public class HistoricalCalculatorsResults {
@@ -13,9 +12,9 @@ public class HistoricalCalculatorsResults {
     @Column(name = "id")
     private long id;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "contact_id")
-    private Set<Contact>contacts;
+    private Contact contact;
 
     @Column(name = "result")
     private BigDecimal result;
@@ -35,12 +34,23 @@ public class HistoricalCalculatorsResults {
     public HistoricalCalculatorsResults() {
     }
 
+    public HistoricalCalculatorsResults(long id, Contact contact, BigDecimal result, boolean isWHR, boolean isBMI,
+                                        boolean isRFM) {
+        this.id = id;
+        this.contact = contact;
+        this.result = result;
+        this.isWHR = isWHR;
+        this.isBMI = isBMI;
+        this.isRFM = isRFM;
+        this.created = LocalDateTime.now();
+    }
+
     public long getId() {
         return id;
     }
 
-    public Set<Contact> getContacts() {
-        return contacts;
+    public Contact getContact() {
+        return contact;
     }
 
     public BigDecimal getResult() {
@@ -67,8 +77,8 @@ public class HistoricalCalculatorsResults {
         this.id = id;
     }
 
-    public void setContacts(Set<Contact> contacts) {
-        this.contacts = contacts;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public void setResult(BigDecimal result) {

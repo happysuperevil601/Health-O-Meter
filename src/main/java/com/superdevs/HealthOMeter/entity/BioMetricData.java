@@ -14,7 +14,7 @@ public class BioMetricData {
 
     @ManyToOne
     @JoinColumn(name = "contact_id")
-    private Contact contacts;
+    private Contact contact;
 
     @Column(name = "growth")
     private BigDecimal growth;
@@ -34,22 +34,23 @@ public class BioMetricData {
     public BioMetricData() {
     }
 
-    public BioMetricData(long id, BigDecimal growth, BigDecimal weight, BigDecimal waistCirc,
-                         BigDecimal hipCirc, LocalDateTime created) {
+    public BioMetricData(long id, Contact contact, BigDecimal growth, BigDecimal weight,
+                         BigDecimal waistCirc, BigDecimal hipCirc) {
         this.id = id;
+        this.contact = contact;
         this.growth = growth;
         this.weight = weight;
         this.waistCirc = waistCirc;
         this.hipCirc = hipCirc;
-        this.created = created;
+        this.created = LocalDateTime.now();
     }
 
     public long getId() {
         return id;
     }
 
-    public Contact getContacts() {
-        return contacts;
+    public Contact getContact() {
+        return contact;
     }
 
     public BigDecimal getGrowth() {
@@ -76,8 +77,8 @@ public class BioMetricData {
         this.id = id;
     }
 
-    public void setContacts(Contact contacts) {
-        this.contacts = contacts;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public void setGrowth(BigDecimal growth) {
