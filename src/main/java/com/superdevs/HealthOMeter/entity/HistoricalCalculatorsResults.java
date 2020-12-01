@@ -34,9 +34,8 @@ public class HistoricalCalculatorsResults {
     public HistoricalCalculatorsResults() {
     }
 
-    public HistoricalCalculatorsResults(long id, Contact contact, BigDecimal result, boolean isWHR, boolean isBMI,
+    public HistoricalCalculatorsResults(Contact contact, BigDecimal result, boolean isWHR, boolean isBMI,
                                         boolean isRFM) {
-        this.id = id;
         this.contact = contact;
         this.result = result;
         this.isWHR = isWHR;

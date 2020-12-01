@@ -21,8 +21,7 @@ public class MedicalData {
     public MedicalData() {
     }
 
-    public MedicalData(long id, Contact contact) {
-        this.id = id;
+    public MedicalData(Contact contact) {
         this.contact = contact;
         this.created = LocalDateTime.now();
     }

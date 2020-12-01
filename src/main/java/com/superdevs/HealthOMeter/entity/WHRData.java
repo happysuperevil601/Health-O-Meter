@@ -25,8 +25,7 @@ public class WHRData {
     public WHRData() {
     }
 
-    public WHRData(long id, Contact contact, BigDecimal result) {
-        this.id = id;
+    public WHRData(Contact contact, BigDecimal result) {
         this.contact = contact;
         this.result = result;
         this.created =  LocalDateTime.now();

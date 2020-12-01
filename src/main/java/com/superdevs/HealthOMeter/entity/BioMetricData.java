@@ -34,9 +34,8 @@ public class BioMetricData {
     public BioMetricData() {
     }
 
-    public BioMetricData(long id, Contact contact, BigDecimal growth, BigDecimal weight,
+    public BioMetricData(Contact contact, BigDecimal growth, BigDecimal weight,
                          BigDecimal waistCirc, BigDecimal hipCirc) {
-        this.id = id;
         this.contact = contact;
         this.growth = growth;
         this.weight = weight;

@@ -25,8 +25,7 @@ public class RFMData {
     public RFMData() {
     }
 
-    public RFMData(long id, Contact contact, BigDecimal result, LocalDateTime create) {
-        this.id = id;
+    public RFMData(Contact contact, BigDecimal result, LocalDateTime create) {
         this.contact = contact;
         this.result = result;
         this.created =  LocalDateTime.now();

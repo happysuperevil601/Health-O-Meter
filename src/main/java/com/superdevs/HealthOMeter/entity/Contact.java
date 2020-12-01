@@ -64,12 +64,11 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(long id, Set<BioMetricData> bioMetricData, Set<BioMetricHistoricalData> bioMetricHistoricalData,
+    public Contact(Set<BioMetricData> bioMetricData, Set<BioMetricHistoricalData> bioMetricHistoricalData,
                    Set<BMIData> bmiData, Set<WHRData> whrData, Set<RFMData> rfmData,
                    Set<HistoricalCalculatorsResults> historicalCalculatorsResults, Set<MedicalData> medicalData,
                    Set<HistoricalMedicalData> historicalMedicalData, String firstName, String lastName,
                    String email, String nickName, String country, String city) {
-        this.id = id;
         this.bioMetricData = bioMetricData;
         this.bioMetricHistoricalData = bioMetricHistoricalData;
         this.bmiData = bmiData;

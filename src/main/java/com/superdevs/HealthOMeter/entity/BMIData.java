@@ -25,8 +25,7 @@ public class BMIData {
     public BMIData() {
     }
 
-    public BMIData(long id, Contact contact, BigDecimal result) {
-        this.id = id;
+    public BMIData(Contact contact, BigDecimal result) {
         this.contact = contact;
         this.result = result;
         this.created = LocalDateTime.now();

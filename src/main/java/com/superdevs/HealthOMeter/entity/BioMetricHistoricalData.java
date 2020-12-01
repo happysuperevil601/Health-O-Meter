@@ -33,9 +33,8 @@ public class BioMetricHistoricalData {
     public BioMetricHistoricalData() {
     }
 
-    public BioMetricHistoricalData(long id, Contact contact, BigDecimal growth, BigDecimal weight,
+    public BioMetricHistoricalData(Contact contact, BigDecimal growth, BigDecimal weight,
                                    BigDecimal waistCirc, BigDecimal hipCirc) {
-        this.id = id;
         this.contact = contact;
         this.growth = growth;
         this.weight = weight;
