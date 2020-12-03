@@ -1,6 +1,6 @@
 package com.superdevs.HealthOMeter.config;
 
-import com.superdevs.HealthOMeter.entity.Authorities_Users;
+import com.superdevs.HealthOMeter.entity.AuthoritiesUsers;
 import com.superdevs.HealthOMeter.entity.Authority;
 import com.superdevs.HealthOMeter.entity.User;
 import com.superdevs.HealthOMeter.repository.AuthoritiesUsersRepo;
@@ -53,8 +53,8 @@ public class Start {
         Authority userAuthority = new Authority();
         userAuthority.setAuthority("ROLE_USER");
 
-        authorityRepo.save( adminAuthority );
-        authorityRepo.save( userAuthority );
+        authorityRepo.save(adminAuthority);
+        authorityRepo.save(userAuthority);
     }
 
     private void seedRelationships() {
@@ -64,15 +64,15 @@ public class Start {
         Optional<Authority> userAuthorities = authorityRepo.findByAuthority("ROLE_USER");
         Optional<Authority> adminUthorities = authorityRepo.findByAuthority("ROLE_ADMIN");
 
-        Authorities_Users darek_user= new Authorities_Users();
-        darek_user.setAuthority_id(userAuthorities.get().getId());
-        darek_user.setUser_id(user.get().getId());
+        AuthoritiesUsers darekUser = new AuthoritiesUsers();
+        darekUser.setAuthority_id(userAuthorities.get().getId());
+        darekUser.setUser_id(user.get().getId());
 
-        Authorities_Users iza_admin = new Authorities_Users();
-        iza_admin.setAuthority_id(adminUthorities.get().getId());
-        iza_admin.setUser_id(admin.get().getId());
+        AuthoritiesUsers izaAdmin = new AuthoritiesUsers();
+        izaAdmin.setAuthority_id(adminUthorities.get().getId());
+        izaAdmin.setUser_id(admin.get().getId());
 
-        authoritiesUsersRepo.save(darek_user);
-        authoritiesUsersRepo.save(iza_admin);
+        authoritiesUsersRepo.save(darekUser);
+        authoritiesUsersRepo.save(izaAdmin);
     }
 }
