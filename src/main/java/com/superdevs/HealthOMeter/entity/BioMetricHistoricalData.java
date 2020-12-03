@@ -6,14 +6,11 @@ import java.time.LocalDateTime;
 
 @Entity(name = "biometrichistoricaldata")
 public class BioMetricHistoricalData {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
-
-    @ManyToOne
-    @JoinColumn(name = "contact_id")
-    private Contact contact;
 
     @Column(name = "growth")
     private BigDecimal growth;
@@ -30,25 +27,26 @@ public class BioMetricHistoricalData {
     @Column(name = "created")
     private LocalDateTime created;
 
+    @ManyToOne
+    @JoinColumn(name = "contact_id")
+    private Contact contact;
+
     public BioMetricHistoricalData() {
     }
 
-    public BioMetricHistoricalData(Contact contact, BigDecimal growth, BigDecimal weight,
-                                   BigDecimal waistCirc, BigDecimal hipCirc) {
-        this.contact = contact;
+    public BioMetricHistoricalData(long id, BigDecimal growth, BigDecimal weight, BigDecimal waistCirc,
+                                   BigDecimal hipCirc, Contact contact) {
+        this.id = id;
         this.growth = growth;
         this.weight = weight;
         this.waistCirc = waistCirc;
         this.hipCirc = hipCirc;
         this.created = LocalDateTime.now();
+        this.contact = contact;
     }
 
     public long getId() {
         return id;
-    }
-
-    public Contact getContact() {
-        return contact;
     }
 
     public BigDecimal getGrowth() {
@@ -71,12 +69,12 @@ public class BioMetricHistoricalData {
         return created;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Contact getContact() {
+        return contact;
     }
 
-    public void setContact(Contact contact) {
-        this.contact = contact;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setGrowth(BigDecimal growth) {
@@ -97,5 +95,9 @@ public class BioMetricHistoricalData {
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 }

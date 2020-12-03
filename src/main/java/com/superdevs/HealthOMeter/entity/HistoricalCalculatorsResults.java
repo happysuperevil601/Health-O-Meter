@@ -12,10 +12,6 @@ public class HistoricalCalculatorsResults {
     @Column(name = "id")
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "contact_id")
-    private Contact contact;
-
     @Column(name = "result")
     private BigDecimal result;
 
@@ -31,25 +27,26 @@ public class HistoricalCalculatorsResults {
     @Column(name = "created")
     private LocalDateTime created;
 
+    @ManyToOne
+    @JoinColumn(name = "contact_id")
+    private Contact contact;
+
     public HistoricalCalculatorsResults() {
     }
 
-    public HistoricalCalculatorsResults(Contact contact, BigDecimal result, boolean isWHR, boolean isBMI,
-                                        boolean isRFM) {
-        this.contact = contact;
+    public HistoricalCalculatorsResults(long id, BigDecimal result, boolean isWHR, boolean isBMI,
+                                        boolean isRFM, Contact contact) {
+        this.id = id;
         this.result = result;
         this.isWHR = isWHR;
         this.isBMI = isBMI;
         this.isRFM = isRFM;
         this.created = LocalDateTime.now();
+        this.contact = contact;
     }
 
     public long getId() {
         return id;
-    }
-
-    public Contact getContact() {
-        return contact;
     }
 
     public BigDecimal getResult() {
@@ -72,12 +69,12 @@ public class HistoricalCalculatorsResults {
         return created;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Contact getContact() {
+        return contact;
     }
 
-    public void setContact(Contact contact) {
-        this.contact = contact;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setResult(BigDecimal result) {
@@ -98,5 +95,9 @@ public class HistoricalCalculatorsResults {
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 }

@@ -11,42 +11,43 @@ public class HistoricalMedicalData {
     @Column(name = "id")
     private long id;
 
+    @Column(name = "created")
+    private LocalDateTime created;
+
     @ManyToOne
     @JoinColumn(name = "contact_id")
     private Contact contact;
 
-    @Column(name = "createde")
-    private LocalDateTime createde;
-
     public HistoricalMedicalData() {
     }
 
-    public HistoricalMedicalData(Contact contact) {
+    public HistoricalMedicalData(long id, Contact contact) {
+        this.id = id;
+        this.created = LocalDateTime.now();
         this.contact = contact;
-        this.createde = LocalDateTime.now();
     }
 
     public long getId() {
         return id;
     }
 
-    public Contact getContact() {
-        return contact;
+    public LocalDateTime getCreated() {
+        return created;
     }
 
-    public LocalDateTime getCreatede() {
-        return createde;
+    public Contact getContact() {
+        return contact;
     }
 
     public void setId(long id) {
         this.id = id;
     }
 
-    public void setContact(Contact contact) {
-        this.contact = contact;
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 
-    public void setCreatede(LocalDateTime createde) {
-        this.createde = createde;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 }
