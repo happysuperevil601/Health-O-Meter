@@ -18,6 +18,9 @@ public class Contact {
     @Column(name = "last_name")
     private String lastName;
 
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
     @Column(name = "email", unique = true)
     private String email;
 
@@ -63,13 +66,14 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(long id, String firstName, String lastName, String email, String nickName, String country,
+    public Contact(long id, String firstName, String lastName, Gender gender, String email, String nickName, String country,
                    String city, MedicalData medicalData, BioMetricData bioMetricData, BMIData bmiData, WHRData whrData,
                    RFMData rfmData, Set<BioMetricHistoricalData> bioMetricHistoricalData,
                    Set<HistoricalCalculatorsResults> historicalCalculatorsResults, Set<HistoricalMedicalData> historicalMedicalData) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
         this.email = email;
         this.nickName = nickName;
         this.country = country;
@@ -96,6 +100,10 @@ public class Contact {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public Gender getGender() {
+        return gender;
     }
 
     public String getEmail() {
@@ -164,6 +172,10 @@ public class Contact {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public void setEmail(String email) {
