@@ -18,11 +18,11 @@ public class WHRCalculator {
 
         logger.debug("Starting WHR calculation");
 
-        if(waistRatio == null || hipRatio == null ||
-                waistRatio.compareTo(BigDecimal.ZERO) == 0 || hipRatio.compareTo(BigDecimal.ZERO)== 0)
-
+        if(waistRatio == null
+                || hipRatio == null
+                || waistRatio.compareTo(BigDecimal.ZERO) == 0
+                || hipRatio.compareTo(BigDecimal.ZERO)== 0)
             return BigDecimal.ZERO;
-
 
         return waistRatio.divide(hipRatio, mathContext);
     }
