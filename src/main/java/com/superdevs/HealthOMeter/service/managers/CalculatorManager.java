@@ -1,5 +1,7 @@
 package com.superdevs.HealthOMeter.service.managers;
 
+import com.superdevs.HealthOMeter.calculator.WHRCalculator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -8,6 +10,9 @@ import java.math.RoundingMode;
 
 @Component
 public class CalculatorManager {
+
+    @Autowired
+    public WHRCalculator whrCalculator;
 
     public BigDecimal calculateBMI(BigDecimal weight, BigDecimal height) {
 
@@ -19,19 +24,11 @@ public class CalculatorManager {
         return weight.divide(height.pow(2), mathContext);
     }
 
-    public BigDecimal calculateWhr (BigDecimal waistRatio, BigDecimal hipRatio){
-        MathContext mathContext = new MathContext(2, RoundingMode.HALF_UP);
-
-        if(waistRatio == null || hipRatio == null ||
-                waistRatio.compareTo(BigDecimal.ZERO) == 0 || hipRatio.compareTo(BigDecimal.ZERO)== 0)
-            return new BigDecimal("0.0000");
-
-        return waistRatio.divide(hipRatio, mathContext);
-    }
-
     public BigDecimal calculateRFM(String sex, BigDecimal height, BigDecimal waistRatio) {
         MathContext mathContext = new MathContext(3);
 
+
+        //Bismarck - this section (in future) requires refactor
         if (sex != null && height != null && waistRatio!= null
                 && height.compareTo(BigDecimal.ZERO) > 0 && waistRatio.compareTo(BigDecimal.ZERO) > 0
                 && (sex.equalsIgnoreCase("male") || sex.equalsIgnoreCase("female"))) {
