@@ -1,6 +1,7 @@
 package com.superdevs.HealthOMeter;
 
 
+import com.superdevs.HealthOMeter.calculator.WhrCalculator;
 import com.superdevs.HealthOMeter.service.CalculatorService;
 import com.superdevs.HealthOMeter.service.managers.CalculatorManager;
 import org.junit.jupiter.api.Assertions;
@@ -20,7 +21,7 @@ class HealthOMeterApplicationTests {
 
 	@BeforeAll
 	static void loadTestData(){
-		context = new AnnotationConfigApplicationContext(CalculatorManager.class, CalculatorService.class);
+		context = new AnnotationConfigApplicationContext(CalculatorManager.class, CalculatorService.class, WhrCalculator.class);
 		calculatorService = context.getBean(CalculatorService.class);
 	}
 
@@ -57,7 +58,7 @@ class HealthOMeterApplicationTests {
 		//Arrange
 		BigDecimal waist = new BigDecimal("0");
 		BigDecimal hip = new BigDecimal("93");
-		BigDecimal expectedScore = new BigDecimal("0.0000");
+		BigDecimal expectedScore = BigDecimal.ZERO;
 		//Act
 		BigDecimal result = calculatorService.getCalculateWHR(waist,hip);
 		//Assert
