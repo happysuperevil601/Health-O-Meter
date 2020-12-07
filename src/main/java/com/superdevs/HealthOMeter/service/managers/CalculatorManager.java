@@ -1,6 +1,6 @@
 package com.superdevs.HealthOMeter.service.managers;
 
-import com.superdevs.HealthOMeter.calculator.WhrCalculator;
+import com.superdevs.HealthOMeter.calculator.WHRCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -13,10 +13,10 @@ import java.math.RoundingMode;
 public class CalculatorManager {
 
     @Autowired
-    @Qualifier("whrCalculator")
-    public WhrCalculator whrCalculator;
+    @Qualifier("WHRCalculator")
+    public WHRCalculator whrCalculator;
 
-    public CalculatorManager(@Qualifier("whrCalculator") WhrCalculator whrCalculator) {
+    public CalculatorManager(@Qualifier("WHRCalculator") WHRCalculator whrCalculator) {
         this.whrCalculator = whrCalculator;
     }
 

@@ -1,7 +1,7 @@
 package com.superdevs.HealthOMeter;
 
 
-import com.superdevs.HealthOMeter.calculator.WhrCalculator;
+import com.superdevs.HealthOMeter.calculator.WHRCalculator;
 import com.superdevs.HealthOMeter.service.CalculatorService;
 import com.superdevs.HealthOMeter.service.managers.CalculatorManager;
 import org.junit.jupiter.api.Assertions;
@@ -21,7 +21,7 @@ class HealthOMeterApplicationTests {
 
 	@BeforeAll
 	static void loadTestData(){
-		context = new AnnotationConfigApplicationContext(CalculatorManager.class, CalculatorService.class, WhrCalculator.class);
+		context = new AnnotationConfigApplicationContext(CalculatorManager.class, CalculatorService.class, WHRCalculator.class);
 		calculatorService = context.getBean(CalculatorService.class);
 	}
 

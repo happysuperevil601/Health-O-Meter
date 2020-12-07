@@ -9,9 +9,9 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 
 @Component
-public class WhrCalculator {
+public class WHRCalculator {
 
-    Logger logger = LoggerFactory.getLogger(WhrCalculator.class);
+    Logger logger = LoggerFactory.getLogger(WHRCalculator.class);
 
     public BigDecimal calculateWhr (BigDecimal waistRatio, BigDecimal hipRatio){
         MathContext mathContext = new MathContext(2, RoundingMode.HALF_UP);
