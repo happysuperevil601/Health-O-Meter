@@ -22,8 +22,7 @@ public class CalculatorManager {
     @Qualifier("RFMCalculator")
     public RFMCalculator rfmCalculator;
 
-    public CalculatorManager(@Qualifier("WHRCalculator") WHRCalculator whrCalculator) {
-        this.whrCalculator = whrCalculator;
+    public CalculatorManager() {
     }
 
     public BigDecimal calculateBMI(BigDecimal weight, BigDecimal height) {
