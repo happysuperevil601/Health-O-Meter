@@ -1,5 +1,6 @@
 package com.superdevs.HealthOMeter.service.managers;
 
+import com.superdevs.HealthOMeter.calculator.BMICalculator;
 import com.superdevs.HealthOMeter.calculator.RFMCalculator;
 import com.superdevs.HealthOMeter.calculator.WHRCalculator;
 import com.superdevs.HealthOMeter.entity.Gender;
@@ -21,6 +22,10 @@ public class CalculatorManager {
     @Autowired
     @Qualifier("RFMCalculator")
     public RFMCalculator rfmCalculator;
+
+    @Autowired
+    @Qualifier("BMICalculator")
+    public BMICalculator bmiCalculator;
 
     public CalculatorManager() {
     }
