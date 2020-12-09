@@ -1,5 +1,6 @@
 package com.superdevs.HealthOMeter.service.managers;
 
+import com.superdevs.HealthOMeter.calculator.BMICalculator;
 import com.superdevs.HealthOMeter.calculator.RFMCalculator;
 import com.superdevs.HealthOMeter.calculator.WHRCalculator;
 import com.superdevs.HealthOMeter.entity.Gender;
@@ -22,17 +23,15 @@ public class CalculatorManager {
     @Qualifier("RFMCalculator")
     public RFMCalculator rfmCalculator;
 
+    @Autowired
+    @Qualifier("BMICalculator")
+    public BMICalculator bmiCalculator;
+
     public CalculatorManager() {
     }
 
     public BigDecimal calculateBMI(BigDecimal weight, BigDecimal height) {
-
-        MathContext mathContext = new MathContext(3, RoundingMode.HALF_UP);
-        // For now, because i don't know how we handle wrong data I added below "if" statement
-        if (weight == null || height == null || weight.compareTo(BigDecimal.ZERO) == 0) {
-            return new BigDecimal("0.000");
-        }
-        return weight.divide(height.pow(2), mathContext);
+        return bmiCalculator.calculateBMI(weight, height);
     }
 
     public BigDecimal calculateWhr(BigDecimal waistRatio, BigDecimal hipRatio){

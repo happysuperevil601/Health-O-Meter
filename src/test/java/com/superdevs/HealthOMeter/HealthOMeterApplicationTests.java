@@ -1,6 +1,7 @@
 package com.superdevs.HealthOMeter;
 
 
+import com.superdevs.HealthOMeter.calculator.BMICalculator;
 import com.superdevs.HealthOMeter.calculator.RFMCalculator;
 import com.superdevs.HealthOMeter.calculator.WHRCalculator;
 import com.superdevs.HealthOMeter.entity.Gender;
@@ -23,7 +24,8 @@ class HealthOMeterApplicationTests {
 
 	@BeforeAll
 	static void loadTestData(){
-		context = new AnnotationConfigApplicationContext(CalculatorManager.class, CalculatorService.class, WHRCalculator.class, RFMCalculator.class);
+		context = new AnnotationConfigApplicationContext(CalculatorManager.class, CalculatorService.class,
+				WHRCalculator.class, RFMCalculator.class, BMICalculator.class);
 		calculatorService = context.getBean(CalculatorService.class);
 	}
 

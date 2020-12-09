@@ -1,0 +1,30 @@
+package com.superdevs.HealthOMeter.calculator;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+
+@Component
+public class BMICalculator {
+
+    Logger logger = LoggerFactory.getLogger(BMICalculator.class);
+
+    public BigDecimal calculateBMI(BigDecimal weight, BigDecimal height) {
+        MathContext mathContext = new MathContext(3, RoundingMode.HALF_UP);
+
+        logger.debug("Starting BMI calculation");
+
+        if (weight == null
+                || height == null
+                || weight.compareTo(BigDecimal.ZERO) == 0
+                || height.compareTo(BigDecimal.ZERO) == 0)
+            return BigDecimal.ZERO;
+
+        return weight.divide(height.pow(2), mathContext);
+    }
+}
+
