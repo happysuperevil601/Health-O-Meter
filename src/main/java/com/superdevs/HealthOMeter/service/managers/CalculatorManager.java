@@ -1,16 +1,14 @@
 package com.superdevs.HealthOMeter.service.managers;
 
-import com.superdevs.HealthOMeter.calculator.BMICalculator;
-import com.superdevs.HealthOMeter.calculator.RFMCalculator;
-import com.superdevs.HealthOMeter.calculator.WHRCalculator;
+import com.superdevs.HealthOMeter.calculators.BMICalculator;
+import com.superdevs.HealthOMeter.calculators.RFMCalculator;
+import com.superdevs.HealthOMeter.calculators.WHRCalculator;
 import com.superdevs.HealthOMeter.entity.Gender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 
 @Component
 public class CalculatorManager {

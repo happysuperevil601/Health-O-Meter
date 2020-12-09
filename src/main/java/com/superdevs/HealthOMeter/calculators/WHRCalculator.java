@@ -1,4 +1,4 @@
-package com.superdevs.HealthOMeter.calculator;
+package com.superdevs.HealthOMeter.calculators;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

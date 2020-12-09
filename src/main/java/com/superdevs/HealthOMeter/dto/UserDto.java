@@ -1,35 +1,30 @@
-package com.superdevs.HealthOMeter.entity;
+package com.superdevs.HealthOMeter.dto;
 
-import javax.persistence.*;
+import com.superdevs.HealthOMeter.entity.Authority;
+import com.superdevs.HealthOMeter.entity.Contact;
+
 import java.util.Set;
 
-@Entity(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+public class UserDto {
+
     private Long id;
-
-    @Column(name = "username", unique = true)
     private String username;
-
-    @Column(name = "password")
     private String password;
-
-    @Column(name = "enabled")
     private boolean enabled;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contact_id", referencedColumnName = "id")
     private Contact contact;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "authorities_users",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "authority_id")
-    )
     private Set<Authority> authorities;
+
+    public UserDto() {
+    }
+
+    public UserDto(Long id, String username, String password, boolean enabled, Contact contact, Set<Authority> authorities) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.contact = contact;
+        this.authorities = authorities;
+    }
 
     public Long getId() {
         return id;

@@ -1,8 +1,8 @@
 package com.superdevs.HealthOMeter.service;
 
-import com.superdevs.HealthOMeter.calculator.BMICalculator;
-import com.superdevs.HealthOMeter.calculator.RFMCalculator;
-import com.superdevs.HealthOMeter.calculator.WHRCalculator;
+import com.superdevs.HealthOMeter.calculators.BMICalculator;
+import com.superdevs.HealthOMeter.calculators.RFMCalculator;
+import com.superdevs.HealthOMeter.calculators.WHRCalculator;
 import com.superdevs.HealthOMeter.entity.Gender;
 import com.superdevs.HealthOMeter.service.managers.CalculatorManager;
 import org.junit.jupiter.api.Assertions;

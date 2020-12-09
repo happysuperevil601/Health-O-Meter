@@ -1,19 +1,19 @@
-package com.superdevs.HealthOMeter.entity;
+package com.superdevs.HealthOMeter.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class AuthoritiesUsersDto {
 
-@Entity(name = "authorities_users")
-public class AuthoritiesUsers {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private Long user_id;
-
     private Long authority_id;
+
+    public AuthoritiesUsersDto() {
+    }
+
+    public AuthoritiesUsersDto(Long id, Long user_id, Long authority_id) {
+        this.id = id;
+        this.user_id = user_id;
+        this.authority_id = authority_id;
+    }
 
     public Long getId() {
         return id;
