@@ -1,24 +1,35 @@
 package com.superdevs.HealthOMeter.entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Set;
-/*
-Contact or User - discussion
- */
+
 @Entity(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "username", unique = true)
     private String username;
 
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "enabled")
     private boolean enabled;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "authorities_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "authority_id"))
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_id", referencedColumnName = "id")
+    private Contact contact;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "authorities_users",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id")
+    )
     private Set<Authority> authorities;
 
     public Long getId() {
@@ -51,6 +62,14 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public Set<Authority> getAuthorities() {

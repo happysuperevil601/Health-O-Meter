@@ -24,9 +24,6 @@ public class Contact {
     @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name = "nick_name", unique = true)
-    private String nickName;
-
     @Column(name = "country")
     private String country;
 
@@ -38,6 +35,9 @@ public class Contact {
 
     @Column(name = "updated")
     private LocalDateTime updated;
+
+    @OneToOne(mappedBy = "contact", fetch = FetchType.EAGER)
+    private User user;
 
     @OneToOne(mappedBy = "contact", fetch = FetchType.EAGER)
     private MedicalData medicalData;
@@ -66,8 +66,8 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(long id, String firstName, String lastName, Gender gender, String email, String nickName, String country,
-                   String city, MedicalData medicalData, BioMetricData bioMetricData, BMIData bmiData, WHRData whrData,
+    public Contact(long id, String firstName, String lastName, Gender gender, String email, String country,
+                   String city, User user, MedicalData medicalData, BioMetricData bioMetricData, BMIData bmiData, WHRData whrData,
                    RFMData rfmData, Set<BioMetricHistoricalData> bioMetricHistoricalData,
                    Set<HistoricalCalculatorsResults> historicalCalculatorsResults, Set<HistoricalMedicalData> historicalMedicalData) {
         this.id = id;
@@ -75,11 +75,11 @@ public class Contact {
         this.lastName = lastName;
         this.gender = gender;
         this.email = email;
-        this.nickName = nickName;
         this.country = country;
         this.city = city;
         this.created = LocalDateTime.now();
         this.updated = LocalDateTime.now();
+        this.user = user;
         this.medicalData = medicalData;
         this.bioMetricData = bioMetricData;
         this.bmiData = bmiData;
@@ -110,10 +110,6 @@ public class Contact {
         return email;
     }
 
-    public String getNickName() {
-        return nickName;
-    }
-
     public String getCountry() {
         return country;
     }
@@ -128,6 +124,10 @@ public class Contact {
 
     public LocalDateTime getUpdated() {
         return updated;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public MedicalData getMedicalData() {
@@ -182,10 +182,6 @@ public class Contact {
         this.email = email;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
     public void setCountry(String country) {
         this.country = country;
     }
@@ -200,6 +196,10 @@ public class Contact {
 
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setMedicalData(MedicalData medicalData) {
