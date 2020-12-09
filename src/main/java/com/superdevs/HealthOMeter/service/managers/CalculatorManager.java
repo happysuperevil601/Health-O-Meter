@@ -1,7 +1,10 @@
 package com.superdevs.HealthOMeter.service.managers;
 
+import com.superdevs.HealthOMeter.calculator.RFMCalculator;
 import com.superdevs.HealthOMeter.calculator.WHRCalculator;
+import com.superdevs.HealthOMeter.entity.Gender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -12,7 +15,15 @@ import java.math.RoundingMode;
 public class CalculatorManager {
 
     @Autowired
+    @Qualifier("WHRCalculator")
     public WHRCalculator whrCalculator;
+
+    @Autowired
+    @Qualifier("RFMCalculator")
+    public RFMCalculator rfmCalculator;
+
+    public CalculatorManager() {
+    }
 
     public BigDecimal calculateBMI(BigDecimal weight, BigDecimal height) {
 
@@ -24,21 +35,11 @@ public class CalculatorManager {
         return weight.divide(height.pow(2), mathContext);
     }
 
-    public BigDecimal calculateRFM(String sex, BigDecimal height, BigDecimal waistRatio) {
-        MathContext mathContext = new MathContext(3);
+    public BigDecimal calculateWhr(BigDecimal waistRatio, BigDecimal hipRatio){
+        return whrCalculator.calculateWHR(waistRatio,hipRatio);
+    }
 
-
-        //Bismarck - this section (in future) requires refactor
-        if (sex != null && height != null && waistRatio!= null
-                && height.compareTo(BigDecimal.ZERO) > 0 && waistRatio.compareTo(BigDecimal.ZERO) > 0
-                && (sex.equalsIgnoreCase("male") || sex.equalsIgnoreCase("female"))) {
-            BigDecimal partialResult = new BigDecimal("20").multiply(height).divide(waistRatio, mathContext);
-            if (sex.equalsIgnoreCase("male")) {
-                return  new BigDecimal("64").subtract(partialResult);
-            } else if (sex.equalsIgnoreCase("female")) {
-                return new BigDecimal("76").subtract(partialResult);
-            }
-        }
-        return BigDecimal.ZERO;
+    public BigDecimal calculateRFM(Gender gender, BigDecimal height, BigDecimal waistRatio) {
+        return rfmCalculator.calculateRFM(gender, height, waistRatio);
     }
 }

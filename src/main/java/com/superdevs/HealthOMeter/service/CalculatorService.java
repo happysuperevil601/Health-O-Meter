@@ -1,5 +1,6 @@
 package com.superdevs.HealthOMeter.service;
 
+import com.superdevs.HealthOMeter.entity.Gender;
 import com.superdevs.HealthOMeter.service.managers.CalculatorManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,10 @@ public class CalculatorService {
     }
 
     public BigDecimal getCalculateWHR(BigDecimal waistRatio, BigDecimal hipRatio) {
-        return calculatorManager.whrCalculator.calculateWhr(waistRatio, hipRatio);
+        return calculatorManager.calculateWhr(waistRatio, hipRatio);
     }
 
-    public BigDecimal getCalculateRFM(String sex, BigDecimal height, BigDecimal waistRatio) {
-        return calculatorManager.calculateRFM(sex, height, waistRatio);
+    public BigDecimal getCalculateRFM(Gender gender, BigDecimal height, BigDecimal waistRatio) {
+        return calculatorManager.calculateRFM(gender, height, waistRatio);
     }
 }

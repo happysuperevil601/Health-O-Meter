@@ -1,6 +1,9 @@
 package com.superdevs.HealthOMeter;
 
 
+import com.superdevs.HealthOMeter.calculator.RFMCalculator;
+import com.superdevs.HealthOMeter.calculator.WHRCalculator;
+import com.superdevs.HealthOMeter.entity.Gender;
 import com.superdevs.HealthOMeter.service.CalculatorService;
 import com.superdevs.HealthOMeter.service.managers.CalculatorManager;
 import org.junit.jupiter.api.Assertions;
@@ -20,7 +23,7 @@ class HealthOMeterApplicationTests {
 
 	@BeforeAll
 	static void loadTestData(){
-		context = new AnnotationConfigApplicationContext(CalculatorManager.class, CalculatorService.class);
+		context = new AnnotationConfigApplicationContext(CalculatorManager.class, CalculatorService.class, WHRCalculator.class, RFMCalculator.class);
 		calculatorService = context.getBean(CalculatorService.class);
 	}
 
@@ -57,7 +60,7 @@ class HealthOMeterApplicationTests {
 		//Arrange
 		BigDecimal waist = new BigDecimal("0");
 		BigDecimal hip = new BigDecimal("93");
-		BigDecimal expectedScore = new BigDecimal("0.0000");
+		BigDecimal expectedScore = BigDecimal.ZERO;
 		//Act
 		BigDecimal result = calculatorService.getCalculateWHR(waist,hip);
 		//Assert
@@ -67,12 +70,12 @@ class HealthOMeterApplicationTests {
 	@Test
 	void testCalculatorServiceForRfmForFemale() {
 		//Arrange
-		String sex = "female";
+		Gender gender = Gender.FEMALE;
 		BigDecimal height = new BigDecimal("168.90");
 		BigDecimal waist = new BigDecimal("72");
 		BigDecimal expectedResult = new BigDecimal("29.1");
 		//Act
-		BigDecimal result = calculatorService.getCalculateRFM(sex, height, waist);
+		BigDecimal result = calculatorService.getCalculateRFM(gender, height, waist);
 		//Assert
 		Assertions.assertEquals(0, result.compareTo(expectedResult));
 	}
@@ -80,12 +83,12 @@ class HealthOMeterApplicationTests {
 	@Test
 	void testCalculatorServiceForRfmMale() {
 		//Arrange
-		String sex = "male";
+		Gender gender = Gender.MALE;
 		BigDecimal height = new BigDecimal("168.90");
 		BigDecimal waist = new BigDecimal("72");
 		BigDecimal expectedResult = new BigDecimal("17.1");
 		//Act
-		BigDecimal result = calculatorService.getCalculateRFM(sex, height, waist);
+		BigDecimal result = calculatorService.getCalculateRFM(gender, height, waist);
 		//Assert
 		Assertions.assertEquals(0, result.compareTo(expectedResult));
 	}
@@ -93,12 +96,12 @@ class HealthOMeterApplicationTests {
 	@Test
 	void testCalculatorServiceForRfmZero() {
 		//Arrange
-		String sex = "male";
+		Gender gender = Gender.MALE;
 		BigDecimal height = new BigDecimal("168.90");
 		BigDecimal waist = new BigDecimal("0");
 		BigDecimal expectedResult = BigDecimal.ZERO;
 		//Act
-		BigDecimal result = calculatorService.getCalculateRFM(sex, height, waist);
+		BigDecimal result = calculatorService.getCalculateRFM(gender, height, waist);
 		//Assert
 		Assertions.assertEquals(0, result.compareTo(expectedResult));
 	}

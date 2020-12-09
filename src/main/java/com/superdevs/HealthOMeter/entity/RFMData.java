@@ -12,6 +12,12 @@ public class RFMData {
     @Column(name = "id")
     private long id;
 
+    @Column(name="waist_size")
+    private BigDecimal waistSize;
+
+    @Column(name = "height")
+    private BigDecimal height;
+
     @Column(name = "result")
     private BigDecimal result;
 
@@ -25,8 +31,10 @@ public class RFMData {
     public RFMData() {
     }
 
-    public RFMData(long id, BigDecimal result, Contact contact) {
+    public RFMData(long id, BigDecimal waistSize, BigDecimal height, BigDecimal result, Contact contact) {
         this.id = id;
+        this.waistSize = waistSize;
+        this.height = height;
         this.result = result;
         this.created = LocalDateTime.now();
         this.contact = contact;
@@ -34,6 +42,14 @@ public class RFMData {
 
     public long getId() {
         return id;
+    }
+
+    public BigDecimal getWaistSize() {
+        return waistSize;
+    }
+
+    public BigDecimal getHeight() {
+        return height;
     }
 
     public BigDecimal getResult() {
@@ -50,6 +66,14 @@ public class RFMData {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setWaistSize(BigDecimal waistSize) {
+        this.waistSize = waistSize;
+    }
+
+    public void setHeight(BigDecimal height) {
+        this.height = height;
     }
 
     public void setResult(BigDecimal result) {
