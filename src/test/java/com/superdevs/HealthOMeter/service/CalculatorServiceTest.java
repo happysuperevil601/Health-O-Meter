@@ -6,121 +6,113 @@ import com.superdevs.HealthOMeter.calculator.WHRCalculator;
 import com.superdevs.HealthOMeter.entity.Gender;
 import com.superdevs.HealthOMeter.service.managers.CalculatorManager;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 
 @SpringBootTest
+@RunWith(SpringRunner.class)
 public class CalculatorServiceTest {
 
-    static ApplicationContext context;
-    static CalculatorService calculatorService;
-
-    @BeforeAll
-    static void loadTestData(){
-        context = new AnnotationConfigApplicationContext(CalculatorManager.class, CalculatorService.class,
-                WHRCalculator.class, RFMCalculator.class, BMICalculator.class);
-        calculatorService = context.getBean(CalculatorService.class);
-    }
+    public ApplicationContext context = new AnnotationConfigApplicationContext(CalculatorManager.class, CalculatorService.class,
+            WHRCalculator.class, RFMCalculator.class, BMICalculator.class);
+    public CalculatorService calculatorService = context.getBean(CalculatorService.class);
 
     @Test
-    void contextLoads() {
-    }
+    public void testCalculatorServiceForBMI() {
 
-    @Test
-    void testCalculatorServiceForBMI() {
-
-        //Arrange
+        //Given
         BigDecimal weight = new BigDecimal("119.522");
         BigDecimal height = new BigDecimal("1.971");
         BigDecimal expectedValue = new BigDecimal("30.8");
 
-        //Act
+        //When
         BigDecimal result = calculatorService.getCalculateBMI(weight, height);
 
-        //Assert
+        //Then
         Assertions.assertEquals(0, result.compareTo(expectedValue));
     }
 
     @Test
-    void testCalculatorServiceForWHR(){
+    public void testCalculatorServiceForWHR(){
 
-        //Arrange
+        //Given
         BigDecimal waist = new BigDecimal("72");
         BigDecimal hip = new BigDecimal("93");
         BigDecimal expectedScore = new BigDecimal("0.77");
 
-        //Act
+        //When
         BigDecimal result = calculatorService.getCalculateWHR(waist,hip);
 
-        //Assert
+        //Then
         Assertions.assertEquals(expectedScore, result);
     }
 
     @Test
-    void testCalculatorServiceForWHRWithZero(){
+    public void testCalculatorServiceForWHRWithZero(){
 
-        //Arrange
+        //Given
         BigDecimal waist = new BigDecimal("0");
         BigDecimal hip = new BigDecimal("93");
         BigDecimal expectedScore = BigDecimal.ZERO;
 
-        //Act
+        //When
         BigDecimal result = calculatorService.getCalculateWHR(waist,hip);
 
-        //Assert
+        //Then
         Assertions.assertEquals(expectedScore, result);
     }
 
     @Test
-    void testCalculatorServiceForRFMForFemale() {
+    public void testCalculatorServiceForRFMForFemale() {
 
-        //Arrange
+        //Given
         Gender gender = Gender.FEMALE;
         BigDecimal height = new BigDecimal("168.90");
         BigDecimal waist = new BigDecimal("72");
         BigDecimal expectedResult = new BigDecimal("29.1");
 
-        //Act
+        //When
         BigDecimal result = calculatorService.getCalculateRFM(gender, height, waist);
 
-        //Assert
+        //Then
         Assertions.assertEquals(0, result.compareTo(expectedResult));
     }
 
     @Test
-    void testCalculatorServiceForRFMMale() {
+    public void testCalculatorServiceForRFMMale() {
 
-        //Arrange
+        //Given
         Gender gender = Gender.MALE;
         BigDecimal height = new BigDecimal("168.90");
         BigDecimal waist = new BigDecimal("72");
         BigDecimal expectedResult = new BigDecimal("17.1");
 
-        //Act
+        //When
         BigDecimal result = calculatorService.getCalculateRFM(gender, height, waist);
 
-        //Assert
+        //Then
         Assertions.assertEquals(0, result.compareTo(expectedResult));
     }
 
     @Test
-    void testCalculatorServiceForRFMZero() {
+    public void testCalculatorServiceForRFMZero() {
 
-        //Arrange
+        //Given
         Gender gender = Gender.MALE;
         BigDecimal height = new BigDecimal("168.90");
         BigDecimal waist = new BigDecimal("0");
         BigDecimal expectedResult = BigDecimal.ZERO;
 
-        //Act
+        //When
         BigDecimal result = calculatorService.getCalculateRFM(gender, height, waist);
 
-        //Assert
+        //Then
         Assertions.assertEquals(0, result.compareTo(expectedResult));
     }
 
