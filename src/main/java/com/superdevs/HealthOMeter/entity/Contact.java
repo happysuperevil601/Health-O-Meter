@@ -36,8 +36,7 @@ public class Contact {
     @Column(name = "updated")
     private LocalDateTime updated;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "contact", fetch = FetchType.EAGER)
     private User user;
 
     @OneToOne(mappedBy = "contact", fetch = FetchType.EAGER)

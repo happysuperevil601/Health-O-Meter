@@ -20,13 +20,11 @@ public class User {
     @Column(name = "enabled")
     private boolean enabled;
 
-    @Column(name = "lastActivity")
-    private LocalDateTime lastActivity;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_id", referencedColumnName = "id")
+    private Contact contact;
 
-    @Column(name = "attemptsCounter")
-    private int attemptsCounter;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "authorities_users",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -66,20 +64,12 @@ public class User {
         this.enabled = enabled;
     }
 
-    public LocalDateTime getLastActivity() {
-        return lastActivity;
+    public Contact getContact() {
+        return contact;
     }
 
-    public void setLastActivity(LocalDateTime lastActivity) {
-        this.lastActivity = lastActivity;
-    }
-
-    public int getAttemptsCounter() {
-        return attemptsCounter;
-    }
-
-    public void setAttemptsCounter(int attemptsCounter) {
-        this.attemptsCounter = attemptsCounter;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public Set<Authority> getAuthorities() {
