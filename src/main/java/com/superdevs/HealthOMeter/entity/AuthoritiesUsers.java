@@ -10,10 +10,17 @@ public class AuthoritiesUsers {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private Long user_id;
-
     private Long authority_id;
+
+    public AuthoritiesUsers() {
+    }
+
+    public AuthoritiesUsers(Long id, Long user_id, Long authority_id) {
+        this.id = id;
+        this.user_id = user_id;
+        this.authority_id = authority_id;
+    }
 
     public Long getId() {
         return id;

@@ -12,6 +12,12 @@ public class BMIData {
     @Column(name = "id")
     private long id;
 
+    @Column(name = "height")
+    private BigDecimal height;
+
+    @Column(name = "weight")
+    private BigDecimal weight;
+
     @Column(name = "result")
     private BigDecimal result;
 
@@ -25,8 +31,10 @@ public class BMIData {
     public BMIData() {
     }
 
-    public BMIData(long id, BigDecimal result, Contact contact) {
+    public BMIData(long id, BigDecimal height, BigDecimal weight, BigDecimal result, Contact contact) {
         this.id = id;
+        this.height = height;
+        this.weight = weight;
         this.result = result;
         this.created = LocalDateTime.now();
         this.contact = contact;
@@ -34,6 +42,14 @@ public class BMIData {
 
     public long getId() {
         return id;
+    }
+
+    public BigDecimal getHeight() {
+        return height;
+    }
+
+    public BigDecimal getWeight() {
+        return weight;
     }
 
     public BigDecimal getResult() {
@@ -50,6 +66,14 @@ public class BMIData {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setHeight(BigDecimal height) {
+        this.height = height;
+    }
+
+    public void setWeight(BigDecimal weight) {
+        this.weight = weight;
     }
 
     public void setResult(BigDecimal result) {

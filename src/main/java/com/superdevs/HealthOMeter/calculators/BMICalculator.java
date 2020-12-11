@@ -13,10 +13,10 @@ public class BMICalculator {
 
     Logger logger = LoggerFactory.getLogger(BMICalculator.class);
 
-    public BigDecimal calculateBMI(BigDecimal weight, BigDecimal height) {
+    public BigDecimal calculateBMI(BigDecimal height, BigDecimal weight) {
         MathContext mathContext = new MathContext(3, RoundingMode.HALF_UP);
 
-        logger.debug("Starting BMI calculation");
+        logger.debug("Starting BMI calculation!");
 
         if (weight == null
                 || height == null

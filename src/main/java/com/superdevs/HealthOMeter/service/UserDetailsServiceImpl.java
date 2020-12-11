@@ -18,6 +18,7 @@ import java.util.List;
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User appUser = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("No user exists!"));

@@ -22,6 +22,12 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
 
     Optional<Contact> findContactByLastName(String lastName);
 
+    boolean existsByFirstName(String firstName);
+
+    boolean existsByLastName(String lastName);
+
+    boolean existsById(Long id);
+
     List<Contact> findContactByGender(Enum gender);
 
     List<Contact> findContactByCity(String city);

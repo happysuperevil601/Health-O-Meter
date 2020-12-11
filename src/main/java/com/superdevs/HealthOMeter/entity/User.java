@@ -31,6 +31,18 @@ public class User {
     )
     private Set<Authority> authorities;
 
+    public User() {
+    }
+
+    public User(Long id, String username, String password, boolean enabled, Contact contact, Set<Authority> authorities) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.contact = contact;
+        this.authorities = authorities;
+    }
+
     public Long getId() {
         return id;
     }

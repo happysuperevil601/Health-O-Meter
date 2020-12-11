@@ -8,12 +8,18 @@ import org.springframework.stereotype.Component;
 public class HistoricalCalculatorsResultsMapper {
 
     public HistoricalCalculatorsResults mapToHistoricalCalculatorsResults
-            (HistoricalCalculatorsResultsDto historicalCalculatorsResultsDto) {
-        return new HistoricalCalculatorsResults();
+            (final HistoricalCalculatorsResultsDto historicalCalculatorsResultsDto) {
+        return new HistoricalCalculatorsResults(
+                historicalCalculatorsResultsDto.getId(),
+                historicalCalculatorsResultsDto.getResult(),
+                historicalCalculatorsResultsDto.isWHR(),
+                historicalCalculatorsResultsDto.isBMI(),
+                historicalCalculatorsResultsDto.isRFM(),
+                historicalCalculatorsResultsDto.getContact());
     }
 
     public HistoricalCalculatorsResultsDto mapToHistoricalCalculatorsResultsDto
-            (HistoricalCalculatorsResults historicalCalculatorsResults) {
+            (final HistoricalCalculatorsResults historicalCalculatorsResults) {
         return new HistoricalCalculatorsResultsDto(
                 historicalCalculatorsResults.getId(),
                 historicalCalculatorsResults.getResult(),

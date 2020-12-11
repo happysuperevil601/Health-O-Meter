@@ -16,7 +16,7 @@ public class WHRCalculator {
     public BigDecimal calculateWHR(BigDecimal waistRatio, BigDecimal hipRatio){
         MathContext mathContext = new MathContext(2, RoundingMode.HALF_UP);
 
-        logger.debug("Starting WHR calculation");
+        logger.debug("Starting WHR calculation!");
 
         if(waistRatio == null
                 || hipRatio == null

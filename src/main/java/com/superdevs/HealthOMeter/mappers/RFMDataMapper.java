@@ -7,17 +7,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class RFMDataMapper {
 
-    public RFMData mapToRFMData (RFMDataDto rfmDataDto){
-        return new RFMData();
+    public RFMData mapToRFMData(final RFMDataDto rfmDataDto) {
+        return new RFMData(
+                rfmDataDto.getId(),
+                rfmDataDto.getWaistSize(),
+                rfmDataDto.getHeight(),
+                rfmDataDto.getResult(),
+                rfmDataDto.getContact());
     }
 
-    public RFMDataDto mapToRFMDataDto (RFMData rfmData){
+    public RFMDataDto mapToRFMDataDto(final RFMData rfmData) {
         return new RFMDataDto(
                 rfmData.getId(),
                 rfmData.getWaistSize(),
                 rfmData.getHeight(),
                 rfmData.getResult(),
-                rfmData.getContact()
-        );
+                rfmData.getContact());
     }
 }

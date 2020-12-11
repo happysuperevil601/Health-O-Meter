@@ -7,11 +7,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class BioMetricHistoricalDataMapper {
 
-    public BioMetricHistoricalData mapToBioMetricHistoricalData(BioMetricHistoricalDataDto bioMetricHistoricalDataDto) {
-        return new BioMetricHistoricalData();
+    public BioMetricHistoricalData mapToBioMetricHistoricalData(final BioMetricHistoricalDataDto bioMetricHistoricalDataDto) {
+        return new BioMetricHistoricalData(
+                bioMetricHistoricalDataDto.getId(),
+                bioMetricHistoricalDataDto.getGrowth(),
+                bioMetricHistoricalDataDto.getWeight(),
+                bioMetricHistoricalDataDto.getWaistCirc(),
+                bioMetricHistoricalDataDto.getHipCirc(),
+                bioMetricHistoricalDataDto.getContact());
     }
 
-    public BioMetricHistoricalDataDto mapToBioMetricHistoricalDataDto(BioMetricHistoricalData bioMetricHistoricalData) {
+    public BioMetricHistoricalDataDto mapToBioMetricHistoricalDataDto(final BioMetricHistoricalData bioMetricHistoricalData) {
         return new BioMetricHistoricalDataDto(
                 bioMetricHistoricalData.getId(),
                 bioMetricHistoricalData.getGrowth(),

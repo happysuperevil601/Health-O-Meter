@@ -7,11 +7,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class WHRDataMapper {
 
-    public WHRData mapToWHRData(WHRDataDto whrDataDto) {
-        return new WHRData();
+    public WHRData mapToWHRData(final WHRDataDto whrDataDto) {
+        return new WHRData(
+                whrDataDto.getId(),
+                whrDataDto.getWaistSize(),
+                whrDataDto.getHipSize(),
+                whrDataDto.getResult(),
+                whrDataDto.getContact());
     }
 
-    public WHRDataDto mapToWHRDataDto(WHRData whrData) {
+    public WHRDataDto mapToWHRDataDto(final WHRData whrData) {
         return new
                 WHRDataDto(
                 whrData.getId(),

@@ -16,7 +16,7 @@ public class RFMCalculator {
     public BigDecimal calculateRFM(Gender gender, BigDecimal height, BigDecimal waistRatio) {
         MathContext mathContext = new MathContext(3);
 
-        logger.debug("Starting RFM calculation");
+        logger.debug("Starting RFM calculation!");
 
 
         if (gender != null && height != null && waistRatio!= null

@@ -2,7 +2,6 @@ package com.superdevs.HealthOMeter.dto;
 
 import com.superdevs.HealthOMeter.entity.Contact;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
