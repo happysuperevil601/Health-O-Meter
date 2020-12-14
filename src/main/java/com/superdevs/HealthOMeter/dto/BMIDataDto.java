@@ -1,37 +1,24 @@
-package com.superdevs.HealthOMeter.entity;
+package com.superdevs.HealthOMeter.dto;
 
-import javax.persistence.*;
+import com.superdevs.HealthOMeter.entity.Contact;
+
+import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity(name = "bmidata")
-public class BMIData {
+public class BMIDataDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
-
-    @Column(name = "height")
     private BigDecimal height;
-
-    @Column(name = "weight")
     private BigDecimal weight;
-
-    @Column(name = "result")
     private BigDecimal result;
-
-    @Column(name = "created")
     private LocalDateTime created;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contact_id", referencedColumnName = "id")
     private Contact contact;
 
-    public BMIData() {
+    public BMIDataDto() {
     }
 
-    public BMIData(BigDecimal height, BigDecimal weight, BigDecimal result, Contact contact) {
+    public BMIDataDto(BigDecimal height, BigDecimal weight, BigDecimal result, Contact contact) {
         this.height = height;
         this.weight = weight;
         this.result = result;

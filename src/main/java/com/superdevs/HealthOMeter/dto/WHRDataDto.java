@@ -1,37 +1,23 @@
-package com.superdevs.HealthOMeter.entity;
+package com.superdevs.HealthOMeter.dto;
 
-import javax.persistence.*;
+import com.superdevs.HealthOMeter.entity.Contact;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity(name = "whrdata")
-public class WHRData {
+public class WHRDataDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
-
-    @Column(name="waist_size")
     private BigDecimal waistSize;
-
-    @Column(name="hip_size")
     private BigDecimal hipSize;
-
-    @Column(name = "result")
     private BigDecimal result;
-
-    @Column(name = "created")
     private LocalDateTime created;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contact_id", referencedColumnName = "id")
     private Contact contact;
 
-    public WHRData() {
+    public WHRDataDto() {
     }
 
-    public WHRData(BigDecimal waistSize, BigDecimal hipSize,
+    public WHRDataDto(BigDecimal waistSize, BigDecimal hipSize,
                    BigDecimal result, Contact contact) {
         this.waistSize = waistSize;
         this.hipSize = hipSize;

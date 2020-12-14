@@ -1,40 +1,24 @@
-package com.superdevs.HealthOMeter.entity;
+package com.superdevs.HealthOMeter.dto;
 
-import javax.persistence.*;
+import com.superdevs.HealthOMeter.entity.Contact;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity(name = "historicalcalculatorsresults")
-public class HistoricalCalculatorsResults {
+public class HistoricalCalculatorsResultsDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
-
-    @Column(name = "result")
     private BigDecimal result;
-
-    @Column(name = "isWHR")
     private boolean isWHR;
-
-    @Column(name = "isBMI")
     private boolean isBMI;
-
-    @Column(name = "isRFM")
     private boolean isRFM;
-
-    @Column(name = "created")
     private LocalDateTime created;
-
-    @ManyToOne
-    @JoinColumn(name = "contact_id")
     private Contact contact;
 
-    public HistoricalCalculatorsResults() {
+    public HistoricalCalculatorsResultsDto() {
     }
 
-    public HistoricalCalculatorsResults(BigDecimal result, boolean isWHR, boolean isBMI,
+    public HistoricalCalculatorsResultsDto(BigDecimal result, boolean isWHR, boolean isBMI,
                                         boolean isRFM, Contact contact) {
         this.result = result;
         this.isWHR = isWHR;

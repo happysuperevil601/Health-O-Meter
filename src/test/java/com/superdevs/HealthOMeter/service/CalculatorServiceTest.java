@@ -1,8 +1,8 @@
 package com.superdevs.HealthOMeter.service;
 
-import com.superdevs.HealthOMeter.calculator.BMICalculator;
-import com.superdevs.HealthOMeter.calculator.RFMCalculator;
-import com.superdevs.HealthOMeter.calculator.WHRCalculator;
+import com.superdevs.HealthOMeter.calculators.BMICalculator;
+import com.superdevs.HealthOMeter.calculators.RFMCalculator;
+import com.superdevs.HealthOMeter.calculators.WHRCalculator;
 import com.superdevs.HealthOMeter.entity.Gender;
 import com.superdevs.HealthOMeter.service.managers.CalculatorManager;
 import org.junit.jupiter.api.Assertions;
@@ -32,14 +32,14 @@ public class CalculatorServiceTest {
         BigDecimal expectedValue = new BigDecimal("30.8");
 
         //When
-        BigDecimal result = calculatorService.getCalculateBMI(weight, height);
+        BigDecimal result = calculatorService.getCalculateBMI(height, weight);
 
         //Then
         Assertions.assertEquals(0, result.compareTo(expectedValue));
     }
 
     @Test
-    public void testCalculatorServiceForWHR(){
+    public void testCalculatorServiceForWHR() {
 
         //Given
         BigDecimal waist = new BigDecimal("72");
@@ -47,14 +47,14 @@ public class CalculatorServiceTest {
         BigDecimal expectedScore = new BigDecimal("0.77");
 
         //When
-        BigDecimal result = calculatorService.getCalculateWHR(waist,hip);
+        BigDecimal result = calculatorService.getCalculateWHR(waist, hip);
 
         //Then
         Assertions.assertEquals(expectedScore, result);
     }
 
     @Test
-    public void testCalculatorServiceForWHRWithZero(){
+    public void testCalculatorServiceForWHRWithZero() {
 
         //Given
         BigDecimal waist = new BigDecimal("0");
@@ -62,7 +62,7 @@ public class CalculatorServiceTest {
         BigDecimal expectedScore = BigDecimal.ZERO;
 
         //When
-        BigDecimal result = calculatorService.getCalculateWHR(waist,hip);
+        BigDecimal result = calculatorService.getCalculateWHR(waist, hip);
 
         //Then
         Assertions.assertEquals(expectedScore, result);

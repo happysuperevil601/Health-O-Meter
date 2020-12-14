@@ -1,27 +1,19 @@
-package com.superdevs.HealthOMeter.entity;
+package com.superdevs.HealthOMeter.dto;
 
-import javax.persistence.*;
+import com.superdevs.HealthOMeter.entity.Contact;
+
 import java.time.LocalDateTime;
 
-@Entity(name = "historicalMedicalData")
-public class HistoricalMedicalData {
+public class MedicalDataDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
-
-    @Column(name = "created")
     private LocalDateTime created;
-
-    @ManyToOne
-    @JoinColumn(name = "contact_id")
     private Contact contact;
 
-    public HistoricalMedicalData() {
+    public MedicalDataDto() {
     }
 
-    public HistoricalMedicalData(Contact contact) {
+    public MedicalDataDto(Contact contact) {
         this.created = LocalDateTime.now();
         this.contact = contact;
     }

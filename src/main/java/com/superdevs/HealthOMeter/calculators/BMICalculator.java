@@ -1,4 +1,4 @@
-package com.superdevs.HealthOMeter.calculator;
+package com.superdevs.HealthOMeter.calculators;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,10 +13,10 @@ public class BMICalculator {
 
     Logger logger = LoggerFactory.getLogger(BMICalculator.class);
 
-    public BigDecimal calculateBMI(BigDecimal weight, BigDecimal height) {
+    public BigDecimal calculateBMI(BigDecimal height, BigDecimal weight) {
         MathContext mathContext = new MathContext(3, RoundingMode.HALF_UP);
 
-        logger.debug("Starting BMI calculation");
+        logger.debug("Starting BMI calculation!");
 
         if (weight == null
                 || height == null
@@ -27,4 +27,3 @@ public class BMICalculator {
         return weight.divide(height.pow(2), mathContext);
     }
 }
-

@@ -27,7 +27,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable();
+        //disabled for testing purposes
+        /*http.authorizeRequests()
                 .antMatchers("/forAdmin").access("hasRole('ADMIN')")
                 .antMatchers("/forUser").access("hasRole('USER') or hasRole('ADMIN')")
                 .and()
@@ -37,6 +39,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll()
-                .logoutSuccessUrl("/forAll");
+                .logoutSuccessUrl("/forAll");*/
     }
 }

@@ -13,8 +13,8 @@ public class CalculatorService {
     @Autowired
     CalculatorManager calculatorManager;
 
-    public BigDecimal getCalculateBMI(BigDecimal weight, BigDecimal height) {
-        return calculatorManager.calculateBMI(weight, height);
+    public BigDecimal getCalculateBMI(BigDecimal height, BigDecimal weight) {
+        return calculatorManager.calculateBMI(height, weight);
     }
 
     public BigDecimal getCalculateWHR(BigDecimal waistRatio, BigDecimal hipRatio) {

@@ -10,8 +10,14 @@ public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String authority;
+
+    public Authority() {
+    }
+
+    public Authority(String authority) {
+        this.authority = authority;
+    }
 
     public Long getId() {
         return id;

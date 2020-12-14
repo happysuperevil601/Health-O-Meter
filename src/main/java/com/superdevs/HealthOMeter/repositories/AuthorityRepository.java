@@ -1,6 +1,6 @@
-package com.superdevs.HealthOMeter.repository;
+package com.superdevs.HealthOMeter.repositories;
 
-import com.superdevs.HealthOMeter.entity.Contact;
+import com.superdevs.HealthOMeter.entity.Authority;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +8,5 @@ import javax.transaction.Transactional;
 
 @Transactional
 @Repository
-public interface ContactRepository extends JpaRepository<Contact, Long> {
+public interface AuthorityRepository extends JpaRepository<Authority, Long> {
 }

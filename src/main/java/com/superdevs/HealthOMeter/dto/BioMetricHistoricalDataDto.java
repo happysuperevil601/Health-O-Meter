@@ -1,41 +1,25 @@
-package com.superdevs.HealthOMeter.entity;
+package com.superdevs.HealthOMeter.dto;
 
-import javax.persistence.*;
+import com.superdevs.HealthOMeter.entity.Contact;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity(name = "biometricdata")
-public class BioMetricData {
+public class BioMetricHistoricalDataDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
-
-    @Column(name = "growth")
     private BigDecimal growth;
-
-    @Column(name = "weight")
     private BigDecimal weight;
-
-    @Column(name = "waist_circ")
     private BigDecimal waistCirc;
-
-    @Column(name = "hip_circ")
     private BigDecimal hipCirc;
-
-    @Column(name = "created")
     private LocalDateTime created;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contact_id", referencedColumnName = "id")
     private Contact contact;
 
-    public BioMetricData() {
+    public BioMetricHistoricalDataDto() {
     }
 
-    public BioMetricData(BigDecimal growth, BigDecimal weight, BigDecimal waistCirc,
-                         BigDecimal hipCirc, Contact contact) {
+    public BioMetricHistoricalDataDto(BigDecimal growth, BigDecimal weight, BigDecimal waistCirc,
+                                      BigDecimal hipCirc, Contact contact) {
         this.growth = growth;
         this.weight = weight;
         this.waistCirc = waistCirc;

@@ -1,72 +1,35 @@
-package com.superdevs.HealthOMeter.entity;
+package com.superdevs.HealthOMeter.dto;
 
-import javax.persistence.*;
+import com.superdevs.HealthOMeter.entity.*;
+
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Entity(name = "contact")
-public class Contact {
+public class ContactDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
-
-    @Column(name = "first_name")
     private String firstName;
-
-    @Column(name = "last_name")
     private String lastName;
-
-    @Enumerated(EnumType.STRING)
     private Gender gender;
-
-    @Column(name = "email", unique = true)
     private String email;
-
-    @Column(name = "country")
     private String country;
-
-    @Column(name = "city")
     private String city;
-
-    @Column(name = "created")
     private LocalDateTime created;
-
-    @Column(name = "updated")
     private LocalDateTime updated;
-
-    @OneToOne(mappedBy = "contact", fetch = FetchType.EAGER)
     private User user;
-
-    @OneToOne(mappedBy = "contact", fetch = FetchType.EAGER)
     private MedicalData medicalData;
-
-    @OneToOne(mappedBy = "contact", fetch = FetchType.EAGER)
     private BioMetricData bioMetricData;
-
-    @OneToOne(mappedBy = "contact", fetch = FetchType.EAGER)
     private BMIData bmiData;
-
-    @OneToOne(mappedBy = "contact", fetch = FetchType.EAGER)
     private WHRData whrData;
-
-    @OneToOne(mappedBy = "contact", fetch = FetchType.EAGER)
     private RFMData rfmData;
-
-    @OneToMany(mappedBy = "contact", fetch = FetchType.LAZY)
     private Set<BioMetricHistoricalData> bioMetricHistoricalData;
-
-    @OneToMany(mappedBy = "contact", fetch = FetchType.LAZY)
     private Set<HistoricalCalculatorsResults> historicalCalculatorsResults;
-
-    @OneToMany(mappedBy = "contact", fetch = FetchType.LAZY)
     private Set<HistoricalMedicalData> historicalMedicalData;
 
-    public Contact() {
+    public ContactDto() {
     }
 
-    public Contact(String firstName, String lastName, Gender gender, String email, String country,
+    public ContactDto(String firstName, String lastName, Gender gender, String email, String country,
                    String city, User user, MedicalData medicalData, BioMetricData bioMetricData, BMIData bmiData, WHRData whrData,
                    RFMData rfmData, Set<BioMetricHistoricalData> bioMetricHistoricalData,
                    Set<HistoricalCalculatorsResults> historicalCalculatorsResults, Set<HistoricalMedicalData> historicalMedicalData) {
