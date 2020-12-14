@@ -9,13 +9,11 @@ public class AuthorityMapper {
 
     public Authority mapToAuthority(final AuthorityDto authorityDto) {
         return new Authority(
-                authorityDto.getId(),
                 authorityDto.getAuthority());
     }
 
     public AuthorityDto mapToAuthorityDto(final Authority authority) {
         return new AuthorityDto(
-                authority.getId(),
                 authority.getAuthority());
     }
 }

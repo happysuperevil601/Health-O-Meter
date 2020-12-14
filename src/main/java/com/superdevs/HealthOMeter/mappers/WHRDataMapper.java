@@ -9,7 +9,6 @@ public class WHRDataMapper {
 
     public WHRData mapToWHRData(final WHRDataDto whrDataDto) {
         return new WHRData(
-                whrDataDto.getId(),
                 whrDataDto.getWaistSize(),
                 whrDataDto.getHipSize(),
                 whrDataDto.getResult(),
@@ -19,7 +18,6 @@ public class WHRDataMapper {
     public WHRDataDto mapToWHRDataDto(final WHRData whrData) {
         return new
                 WHRDataDto(
-                whrData.getId(),
                 whrData.getWaistSize(),
                 whrData.getHipSize(),
                 whrData.getResult(),

@@ -18,9 +18,8 @@ public class HistoricalCalculatorsResultsDto {
     public HistoricalCalculatorsResultsDto() {
     }
 
-    public HistoricalCalculatorsResultsDto(long id, BigDecimal result, boolean isWHR, boolean isBMI,
+    public HistoricalCalculatorsResultsDto(BigDecimal result, boolean isWHR, boolean isBMI,
                                         boolean isRFM, Contact contact) {
-        this.id = id;
         this.result = result;
         this.isWHR = isWHR;
         this.isBMI = isBMI;

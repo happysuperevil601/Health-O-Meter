@@ -31,8 +31,7 @@ public class RFMData {
     public RFMData() {
     }
 
-    public RFMData(long id, BigDecimal waistSize, BigDecimal height, BigDecimal result, Contact contact) {
-        this.id = id;
+    public RFMData(BigDecimal waistSize, BigDecimal height, BigDecimal result, Contact contact) {
         this.waistSize = waistSize;
         this.height = height;
         this.result = result;

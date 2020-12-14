@@ -18,8 +18,7 @@ public class BMIDataDto {
     public BMIDataDto() {
     }
 
-    public BMIDataDto(long id, BigDecimal height, BigDecimal weight, BigDecimal result, Contact contact) {
-        this.id = id;
+    public BMIDataDto(BigDecimal height, BigDecimal weight, BigDecimal result, Contact contact) {
         this.height = height;
         this.weight = weight;
         this.result = result;

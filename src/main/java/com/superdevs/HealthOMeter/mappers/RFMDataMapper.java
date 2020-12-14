@@ -9,7 +9,6 @@ public class RFMDataMapper {
 
     public RFMData mapToRFMData(final RFMDataDto rfmDataDto) {
         return new RFMData(
-                rfmDataDto.getId(),
                 rfmDataDto.getWaistSize(),
                 rfmDataDto.getHeight(),
                 rfmDataDto.getResult(),
@@ -18,7 +17,6 @@ public class RFMDataMapper {
 
     public RFMDataDto mapToRFMDataDto(final RFMData rfmData) {
         return new RFMDataDto(
-                rfmData.getId(),
                 rfmData.getWaistSize(),
                 rfmData.getHeight(),
                 rfmData.getResult(),

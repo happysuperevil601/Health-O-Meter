@@ -31,8 +31,7 @@ public class BMIData {
     public BMIData() {
     }
 
-    public BMIData(long id, BigDecimal height, BigDecimal weight, BigDecimal result, Contact contact) {
-        this.id = id;
+    public BMIData(BigDecimal height, BigDecimal weight, BigDecimal result, Contact contact) {
         this.height = height;
         this.weight = weight;
         this.result = result;

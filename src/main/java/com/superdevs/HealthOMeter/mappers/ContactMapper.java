@@ -12,7 +12,6 @@ public class ContactMapper {
 
     public Contact mapToContact(final ContactDto contactDto) {
         return new Contact(
-                contactDto.getId(),
                 contactDto.getFirstName(),
                 contactDto.getLastName(),
                 contactDto.getGender(),
@@ -32,7 +31,6 @@ public class ContactMapper {
 
     public ContactDto mapToContactDto(final Contact contact) {
         return new ContactDto(
-                contact.getId(),
                 contact.getFirstName(),
                 contact.getLastName(),
                 contact.getGender(),

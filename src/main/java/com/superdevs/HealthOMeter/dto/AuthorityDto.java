@@ -8,8 +8,7 @@ public class AuthorityDto {
     public AuthorityDto() {
     }
 
-    public AuthorityDto(Long id, String authority) {
-        this.id = id;
+    public AuthorityDto(String authority) {
         this.authority = authority;
     }
 

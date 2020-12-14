@@ -13,8 +13,7 @@ public class HistoricalMedicalDataDto {
     public HistoricalMedicalDataDto() {
     }
 
-    public HistoricalMedicalDataDto(long id, Contact contact) {
-        this.id = id;
+    public HistoricalMedicalDataDto(Contact contact) {
         this.created = LocalDateTime.now();
         this.contact = contact;
     }

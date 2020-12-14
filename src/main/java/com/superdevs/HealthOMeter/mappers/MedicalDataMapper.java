@@ -9,13 +9,11 @@ public class MedicalDataMapper {
 
     public MedicalData mapToMedicalData(final MedicalDataDto medicalDataDto) {
         return new MedicalData(
-                medicalDataDto.getId(),
                 medicalDataDto.getContact());
     }
 
     public MedicalDataDto mapToMedicalDataDto(final MedicalData medicalData) {
         return new MedicalDataDto(
-                medicalData.getId(),
                 medicalData.getContact());
     }
 }

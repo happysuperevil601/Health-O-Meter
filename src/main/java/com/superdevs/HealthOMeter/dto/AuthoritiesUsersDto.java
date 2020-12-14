@@ -9,8 +9,7 @@ public class AuthoritiesUsersDto {
     public AuthoritiesUsersDto() {
     }
 
-    public AuthoritiesUsersDto(Long id, Long user_id, Long authority_id) {
-        this.id = id;
+    public AuthoritiesUsersDto(Long user_id, Long authority_id) {
         this.user_id = user_id;
         this.authority_id = authority_id;
     }

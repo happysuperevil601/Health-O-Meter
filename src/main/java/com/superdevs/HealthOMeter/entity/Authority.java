@@ -15,8 +15,7 @@ public class Authority {
     public Authority() {
     }
 
-    public Authority(Long id, String authority) {
-        this.id = id;
+    public Authority(String authority) {
         this.authority = authority;
     }
 

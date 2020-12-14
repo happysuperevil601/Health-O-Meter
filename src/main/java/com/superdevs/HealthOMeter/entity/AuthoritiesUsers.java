@@ -16,8 +16,7 @@ public class AuthoritiesUsers {
     public AuthoritiesUsers() {
     }
 
-    public AuthoritiesUsers(Long id, Long user_id, Long authority_id) {
-        this.id = id;
+    public AuthoritiesUsers(Long user_id, Long authority_id) {
         this.user_id = user_id;
         this.authority_id = authority_id;
     }

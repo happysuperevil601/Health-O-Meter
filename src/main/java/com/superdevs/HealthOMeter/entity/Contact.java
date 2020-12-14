@@ -66,11 +66,10 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(long id, String firstName, String lastName, Gender gender, String email, String country,
+    public Contact(String firstName, String lastName, Gender gender, String email, String country,
                    String city, User user, MedicalData medicalData, BioMetricData bioMetricData, BMIData bmiData, WHRData whrData,
                    RFMData rfmData, Set<BioMetricHistoricalData> bioMetricHistoricalData,
                    Set<HistoricalCalculatorsResults> historicalCalculatorsResults, Set<HistoricalMedicalData> historicalMedicalData) {
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;

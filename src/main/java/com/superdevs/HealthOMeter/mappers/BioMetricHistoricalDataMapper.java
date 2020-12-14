@@ -9,7 +9,6 @@ public class BioMetricHistoricalDataMapper {
 
     public BioMetricHistoricalData mapToBioMetricHistoricalData(final BioMetricHistoricalDataDto bioMetricHistoricalDataDto) {
         return new BioMetricHistoricalData(
-                bioMetricHistoricalDataDto.getId(),
                 bioMetricHistoricalDataDto.getGrowth(),
                 bioMetricHistoricalDataDto.getWeight(),
                 bioMetricHistoricalDataDto.getWaistCirc(),
@@ -19,7 +18,6 @@ public class BioMetricHistoricalDataMapper {
 
     public BioMetricHistoricalDataDto mapToBioMetricHistoricalDataDto(final BioMetricHistoricalData bioMetricHistoricalData) {
         return new BioMetricHistoricalDataDto(
-                bioMetricHistoricalData.getId(),
                 bioMetricHistoricalData.getGrowth(),
                 bioMetricHistoricalData.getWeight(),
                 bioMetricHistoricalData.getWaistCirc(),

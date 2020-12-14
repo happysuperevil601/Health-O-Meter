@@ -18,9 +18,8 @@ public class BioMetricHistoricalDataDto {
     public BioMetricHistoricalDataDto() {
     }
 
-    public BioMetricHistoricalDataDto(long id, BigDecimal growth, BigDecimal weight, BigDecimal waistCirc,
+    public BioMetricHistoricalDataDto(BigDecimal growth, BigDecimal weight, BigDecimal waistCirc,
                                       BigDecimal hipCirc, Contact contact) {
-        this.id = id;
         this.growth = growth;
         this.weight = weight;
         this.waistCirc = waistCirc;

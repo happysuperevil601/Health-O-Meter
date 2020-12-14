@@ -9,13 +9,11 @@ public class HistoricalMedicalDataMapper {
 
     public HistoricalMedicalData mapToHistoricalMedicalData(final HistoricalMedicalDataDto historicalMedicalDataDto){
         return new HistoricalMedicalData(
-                historicalMedicalDataDto.getId(),
                 historicalMedicalDataDto.getContact());
     }
 
     public HistoricalMedicalDataDto mapToHistoricalMedicalDataDto(final HistoricalMedicalData historicalMedicalData){
         return new HistoricalMedicalDataDto(
-                historicalMedicalData.getId(),
                 historicalMedicalData.getContact());
     }
 }

@@ -10,7 +10,6 @@ public class HistoricalCalculatorsResultsMapper {
     public HistoricalCalculatorsResults mapToHistoricalCalculatorsResults
             (final HistoricalCalculatorsResultsDto historicalCalculatorsResultsDto) {
         return new HistoricalCalculatorsResults(
-                historicalCalculatorsResultsDto.getId(),
                 historicalCalculatorsResultsDto.getResult(),
                 historicalCalculatorsResultsDto.isWHR(),
                 historicalCalculatorsResultsDto.isBMI(),
@@ -21,7 +20,6 @@ public class HistoricalCalculatorsResultsMapper {
     public HistoricalCalculatorsResultsDto mapToHistoricalCalculatorsResultsDto
             (final HistoricalCalculatorsResults historicalCalculatorsResults) {
         return new HistoricalCalculatorsResultsDto(
-                historicalCalculatorsResults.getId(),
                 historicalCalculatorsResults.getResult(),
                 historicalCalculatorsResults.isWHR(),
                 historicalCalculatorsResults.isBMI(),

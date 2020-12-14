@@ -17,9 +17,8 @@ public class WHRDataDto {
     public WHRDataDto() {
     }
 
-    public WHRDataDto(long id, BigDecimal waistSize, BigDecimal hipSize,
+    public WHRDataDto(BigDecimal waistSize, BigDecimal hipSize,
                    BigDecimal result, Contact contact) {
-        this.id = id;
         this.waistSize = waistSize;
         this.hipSize = hipSize;
         this.result = result;

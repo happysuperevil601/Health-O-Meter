@@ -31,9 +31,8 @@ public class WHRData {
     public WHRData() {
     }
 
-    public WHRData(long id, BigDecimal waistSize, BigDecimal hipSize,
+    public WHRData(BigDecimal waistSize, BigDecimal hipSize,
                    BigDecimal result, Contact contact) {
-        this.id = id;
         this.waistSize = waistSize;
         this.hipSize = hipSize;
         this.result = result;

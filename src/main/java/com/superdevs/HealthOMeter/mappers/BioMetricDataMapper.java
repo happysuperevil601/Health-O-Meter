@@ -9,7 +9,6 @@ public class BioMetricDataMapper {
 
     public BioMetricData mapToBioMetricData(final BioMetricDataDto bioMetricDataDto) {
         return new BioMetricData(
-                bioMetricDataDto.getId(),
                 bioMetricDataDto.getGrowth(),
                 bioMetricDataDto.getWeight(),
                 bioMetricDataDto.getWaistCirc(),
@@ -19,7 +18,6 @@ public class BioMetricDataMapper {
 
     public BioMetricDataDto mapToBioMetricDataDto(final BioMetricData bioMetricData) {
         return new BioMetricDataDto(
-                bioMetricData.getId(),
                 bioMetricData.getGrowth(),
                 bioMetricData.getWeight(),
                 bioMetricData.getWaistCirc(),

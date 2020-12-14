@@ -17,8 +17,7 @@ public class RFMDataDto {
     public RFMDataDto() {
     }
 
-    public RFMDataDto(long id, BigDecimal waistSize, BigDecimal height, BigDecimal result, Contact contact) {
-        this.id = id;
+    public RFMDataDto(BigDecimal waistSize, BigDecimal height, BigDecimal result, Contact contact) {
         this.waistSize = waistSize;
         this.height = height;
         this.result = result;

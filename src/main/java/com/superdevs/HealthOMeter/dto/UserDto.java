@@ -17,8 +17,7 @@ public class UserDto {
     public UserDto() {
     }
 
-    public UserDto(Long id, String username, String password, boolean enabled, Contact contact, Set<Authority> authorities) {
-        this.id = id;
+    public UserDto(String username, String password, boolean enabled, Contact contact, Set<Authority> authorities) {
         this.username = username;
         this.password = password;
         this.enabled = enabled;

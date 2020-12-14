@@ -9,7 +9,6 @@ public class BMIDataMapper {
 
     public BMIData mapToBMIData(final BMIDataDto bmiDataDto) {
         return new BMIData(
-                bmiDataDto.getId(),
                 bmiDataDto.getHeight(),
                 bmiDataDto.getWeight(),
                 bmiDataDto.getResult(),
@@ -18,7 +17,6 @@ public class BMIDataMapper {
 
     public BMIDataDto mapToBMIDataDto(final BMIData bmiData) {
         return new BMIDataDto(
-                bmiData.getId(),
                 bmiData.getHeight(),
                 bmiData.getWeight(),
                 bmiData.getResult(),
