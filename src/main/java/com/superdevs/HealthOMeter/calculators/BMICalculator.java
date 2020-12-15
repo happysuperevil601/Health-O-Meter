@@ -24,6 +24,8 @@ public class BMICalculator {
                 || height.compareTo(BigDecimal.ZERO) == 0)
             return BigDecimal.ZERO;
 
-        return weight.divide(height.pow(2), mathContext);
+        BigDecimal hundred = new BigDecimal(100);
+        BigDecimal convertedHeight = height.divide(hundred);
+        return weight.divide(convertedHeight.pow(2), mathContext);
     }
 }
