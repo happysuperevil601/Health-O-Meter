@@ -28,11 +28,12 @@ public class CalculatorServiceTest {
 
         //Given
         BigDecimal weight = new BigDecimal("119.522");
-        BigDecimal height = new BigDecimal("1.971");
+        BigDecimal height = new BigDecimal("197");
         BigDecimal expectedValue = new BigDecimal("30.8");
 
         //When
         BigDecimal result = calculatorService.getCalculateBMI(height, weight);
+        System.out.println(result);
 
         //Then
         Assertions.assertEquals(0, result.compareTo(expectedValue));
