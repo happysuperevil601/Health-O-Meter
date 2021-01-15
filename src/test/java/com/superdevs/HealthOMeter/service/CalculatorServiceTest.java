@@ -24,6 +24,54 @@ public class CalculatorServiceTest {
     public CalculatorService calculatorService = context.getBean(CalculatorService.class);
 
     @Test
+    public void testCalculatorServiceForBMI() {
+
+        //Given
+        BigDecimal weight = new BigDecimal("119.52");
+        BigDecimal height = new BigDecimal("197");
+        BigDecimal expectedValue = new BigDecimal("30");
+
+        //When
+        BigDecimal result = calculatorService.getCalculateBMI(height, weight);
+        System.out.println(result);
+
+        //Then
+        Assertions.assertEquals(expectedValue, result);
+    }
+
+    @Test
+    public void testBMIWithZeroWeightValue() {
+
+        //Given
+        BigDecimal weight = new BigDecimal("0");
+        BigDecimal height = new BigDecimal("197");
+        BigDecimal expectedValue = BigDecimal.ZERO;
+
+        //When
+        BigDecimal result = calculatorService.getCalculateBMI(height, weight);
+        System.out.println(result);
+
+        //Then
+        Assertions.assertEquals(expectedValue, result);
+    }
+
+    @Test
+    public void testBMIWithZeroHeightValue() {
+
+        //Given
+        BigDecimal weight = new BigDecimal("119.522");
+        BigDecimal height = new BigDecimal("0");
+        BigDecimal expectedValue = BigDecimal.ZERO;
+
+        //When
+        BigDecimal result = calculatorService.getCalculateBMI(height, weight);
+        System.out.println(result);
+
+        //Then
+        Assertions.assertEquals(expectedValue, result);
+    }
+
+    @Test
     public void testCalculatorServiceForWHR() {
 
         //Given
