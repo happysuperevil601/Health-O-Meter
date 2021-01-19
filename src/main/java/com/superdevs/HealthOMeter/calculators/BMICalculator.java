@@ -14,7 +14,7 @@ public class BMICalculator {
     Logger logger = LoggerFactory.getLogger(BMICalculator.class);
 
     public BigDecimal calculateBMI(BigDecimal height, BigDecimal weight) {
-        MathContext mathContext = new MathContext(3, RoundingMode.HALF_UP);
+        MathContext mathContext = new MathContext(2, RoundingMode.HALF_UP);
 
         logger.debug("Starting BMI calculation!");
 
@@ -25,7 +25,7 @@ public class BMICalculator {
             return BigDecimal.ZERO;
 
         BigDecimal hundred = new BigDecimal(100);
-        BigDecimal convertedHeight = height.divide(hundred);
+        BigDecimal convertedHeight = height.divide(hundred, mathContext);
         return weight.divide(convertedHeight.pow(2), mathContext);
     }
 }
