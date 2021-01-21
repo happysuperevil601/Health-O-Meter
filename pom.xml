@@ -15,7 +15,7 @@
     <description>Health management App.</description>
 
     <properties>
-        <!--<java.version>11</java.version>-->
+        <java.version>11</java.version>
         <sonar.projectKey>WiolettaL_Health-O-Meter</sonar.projectKey>
         <sonar.organization>wiolettal</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
