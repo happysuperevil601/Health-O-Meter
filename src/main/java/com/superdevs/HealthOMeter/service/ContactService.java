@@ -18,27 +18,41 @@ public class ContactService {
     @Autowired
     private ContactRepository contactRepository;
 
-    public List<Contact> getAllContacts(){
+    public List<Contact> getAllContacts() {
+        logger.info("Started getAllContacts in ContactService");
+
         return contactRepository.findAll();
     }
 
-    public Contact createContact(Contact contact){
+    public Contact findContactById(Long contactId) {
+        logger.info("Started findContactById in ContactService");
+
+        return contactRepository.findById(contactId).orElseThrow();
+    }
+
+    public Contact createContact(Contact contact) {
+        logger.info("Started createContact in ContactService");
+
         Optional<Contact> contactOptional = contactRepository.findById(contact.getId());
-        if (!contactOptional.isPresent()){
+        if (!contactOptional.isPresent()) {
             return contactRepository.save(contact);
         }
         return contact;
     }
 
-    public Contact updateContact(Contact contact){
+    public Contact updateContact(Contact contact) {
+        logger.info("Started updateContact in ContactService");
+
         Optional<Contact> contactOptional = contactRepository.findById(contact.getId());
-        if (!contactOptional.isPresent()){
+        if (!contactOptional.isPresent()) {
             return contactRepository.save(contact);
         }
         return contact;
     }
 
-    public void deleteContact(Long id){
+    public void deleteContact(Long id) {
+        logger.info("Started deleteContact in ContactService");
+
         Contact deleteContact = contactRepository.findById(id).orElseThrow();
         contactRepository.delete(deleteContact);
     }
