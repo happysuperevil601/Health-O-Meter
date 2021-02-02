@@ -18,7 +18,7 @@ public class HistoricalMedicalDataService {
     @Autowired
     private HistoricalMedicalDataRepository historicalMedicalDataRepository;
 
-    public List<HistoricalMedicalData> getAllHistoricalMedicalDatas() {
+    public List<HistoricalMedicalData> getAllHistoricalMedicalData() {
         logger.info("Started getAllHistoricalMedicalDatas in HistoricalMedicalDataService");
 
         return historicalMedicalDataRepository.findAll();
@@ -34,7 +34,7 @@ public class HistoricalMedicalDataService {
         logger.info("Started createHistoricalMedicalData in HistoricalMedicalDataService");
 
         Optional<HistoricalMedicalData> historicalMedicalDataOptional = historicalMedicalDataRepository.findById(historicalMedicalData.getId());
-        if (!historicalMedicalDataOptional.isPresent()) {
+        if (historicalMedicalDataOptional.isEmpty()) {
             return historicalMedicalDataRepository.save(historicalMedicalData);
         }
         return historicalMedicalData;
@@ -44,7 +44,7 @@ public class HistoricalMedicalDataService {
         logger.info("Started updateHistoricalMedicalData in HistoricalMedicalDataService");
 
         Optional<HistoricalMedicalData> historicalMedicalDataOptional = historicalMedicalDataRepository.findById(historicalMedicalData.getId());
-        if (!historicalMedicalDataOptional.isPresent()) {
+        if (historicalMedicalDataOptional.isEmpty()) {
             return historicalMedicalDataRepository.save(historicalMedicalData);
         }
         return historicalMedicalData;

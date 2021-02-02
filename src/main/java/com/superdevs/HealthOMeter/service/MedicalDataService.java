@@ -18,8 +18,8 @@ public class MedicalDataService {
     @Autowired
     private MedicalDataRepository medicalDataRepository;
 
-    public List<MedicalData> getAllMedicalDatas() {
-        logger.info("Started getAllMedicalDatas in MedicalDataService");
+    public List<MedicalData> getAllMedicalData() {
+        logger.info("Started getAllMedicalData in MedicalDataService");
 
         return medicalDataRepository.findAll();
     }
@@ -34,7 +34,7 @@ public class MedicalDataService {
         logger.info("Started createMedicalData in MedicalDataService");
 
         Optional<MedicalData> medicalDataOptional = medicalDataRepository.findById(medicalData.getId());
-        if (!medicalDataOptional.isPresent()) {
+        if (medicalDataOptional.isEmpty()) {
             return medicalDataRepository.save(medicalData);
         }
         return medicalData;
@@ -44,7 +44,7 @@ public class MedicalDataService {
         logger.info("Started updateMedicalData in MedicalDataService");
 
         Optional<MedicalData> medicalDataOptional = medicalDataRepository.findById(medicalData.getId());
-        if (!medicalDataOptional.isPresent()) {
+        if (medicalDataOptional.isEmpty()) {
             return medicalDataRepository.save(medicalData);
         }
         return medicalData;

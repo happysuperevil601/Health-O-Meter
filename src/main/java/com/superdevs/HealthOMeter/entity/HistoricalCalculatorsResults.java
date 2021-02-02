@@ -1,5 +1,7 @@
 package com.superdevs.HealthOMeter.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -29,6 +31,7 @@ public class HistoricalCalculatorsResults {
 
     @ManyToOne
     @JoinColumn(name = "contact_id")
+    @JsonBackReference
     private Contact contact;
 
     public HistoricalCalculatorsResults() {

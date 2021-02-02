@@ -18,8 +18,8 @@ public class HistoricalCalculatorsResultsService {
     @Autowired
     private HistoricalCalculatorsResultsRepository historicalCalculatorsResultsRepository;
 
-    public List<HistoricalCalculatorsResults> getAllHistoricalCalculatorsResultss() {
-        logger.info("Started getAllHistoricalCalculatorsResultss in HistoricalCalculatorsResultsService");
+    public List<HistoricalCalculatorsResults> getAllHistoricalCalculatorsResults() {
+        logger.info("Started getAllHistoricalCalculatorsResults in HistoricalCalculatorsResultsService");
 
         return historicalCalculatorsResultsRepository.findAll();
     }
@@ -34,7 +34,7 @@ public class HistoricalCalculatorsResultsService {
         logger.info("Started createHistoricalCalculatorsResults in HistoricalCalculatorsResultsService");
 
         Optional<HistoricalCalculatorsResults> historicalCalculatorsResultsOptional = historicalCalculatorsResultsRepository.findById(historicalCalculatorsResults.getId());
-        if (!historicalCalculatorsResultsOptional.isPresent()) {
+        if (historicalCalculatorsResultsOptional.isEmpty()) {
             return historicalCalculatorsResultsRepository.save(historicalCalculatorsResults);
         }
         return historicalCalculatorsResults;
@@ -44,7 +44,7 @@ public class HistoricalCalculatorsResultsService {
         logger.info("Started updateHistoricalCalculatorsResults in HistoricalCalculatorsResultsService");
 
         Optional<HistoricalCalculatorsResults> historicalCalculatorsResultsOptional = historicalCalculatorsResultsRepository.findById(historicalCalculatorsResults.getId());
-        if (!historicalCalculatorsResultsOptional.isPresent()) {
+        if (historicalCalculatorsResultsOptional.isEmpty()) {
             return historicalCalculatorsResultsRepository.save(historicalCalculatorsResults);
         }
         return historicalCalculatorsResults;

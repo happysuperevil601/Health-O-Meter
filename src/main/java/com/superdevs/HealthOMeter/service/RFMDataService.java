@@ -18,8 +18,8 @@ public class RFMDataService {
     @Autowired
     private RFMDataRepository rFMDataRepository;
 
-    public List<RFMData> getAllRFMDatas() {
-        logger.info("Started getAllRFMDatas in RFMDataService");
+    public List<RFMData> getAllRFMData() {
+        logger.info("Started getAllRFMData in RFMDataService");
 
         return rFMDataRepository.findAll();
     }
@@ -34,7 +34,7 @@ public class RFMDataService {
         logger.info("Started createRFMData in RFMDataService");
 
         Optional<RFMData> rFMDataOptional = rFMDataRepository.findById(rFMData.getId());
-        if (!rFMDataOptional.isPresent()) {
+        if (rFMDataOptional.isEmpty()) {
             return rFMDataRepository.save(rFMData);
         }
         return rFMData;
@@ -44,7 +44,7 @@ public class RFMDataService {
         logger.info("Started updateRFMData in RFMDataService");
 
         Optional<RFMData> rFMDataOptional = rFMDataRepository.findById(rFMData.getId());
-        if (!rFMDataOptional.isPresent()) {
+        if (rFMDataOptional.isEmpty()) {
             return rFMDataRepository.save(rFMData);
         }
         return rFMData;

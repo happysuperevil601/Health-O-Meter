@@ -18,8 +18,8 @@ public class BioMetricHistoricalDataService {
     @Autowired
     private BioMetricHistoricalDataRepository bioMetricHistoricalDataRepository;
 
-    public List<BioMetricHistoricalData> getAllBioMetricHistoricalDatas() {
-        logger.info("Started getAllBioMetricHistoricalDatas in BioMetricHistoricalDataService");
+    public List<BioMetricHistoricalData> getAllBioMetricHistoricalData() {
+        logger.info("Started getAllBioMetricHistoricalData in BioMetricHistoricalDataService");
 
         return bioMetricHistoricalDataRepository.findAll();
     }
@@ -34,7 +34,7 @@ public class BioMetricHistoricalDataService {
         logger.info("Started createBioMetricHistoricalData in BioMetricHistoricalDataService");
 
         Optional<BioMetricHistoricalData> bioMetricHistoricalDataOptional = bioMetricHistoricalDataRepository.findById(bioMetricHistoricalData.getId());
-        if (!bioMetricHistoricalDataOptional.isPresent()) {
+        if (bioMetricHistoricalDataOptional.isEmpty()) {
             return bioMetricHistoricalDataRepository.save(bioMetricHistoricalData);
         }
         return bioMetricHistoricalData;
@@ -44,7 +44,7 @@ public class BioMetricHistoricalDataService {
         logger.info("Started updateBioMetricHistoricalData in BioMetricHistoricalDataService");
 
         Optional<BioMetricHistoricalData> bioMetricHistoricalDataOptional = bioMetricHistoricalDataRepository.findById(bioMetricHistoricalData.getId());
-        if (!bioMetricHistoricalDataOptional.isPresent()) {
+        if (bioMetricHistoricalDataOptional.isEmpty()) {
             return bioMetricHistoricalDataRepository.save(bioMetricHistoricalData);
         }
         return bioMetricHistoricalData;
