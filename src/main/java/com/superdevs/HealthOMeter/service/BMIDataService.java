@@ -18,8 +18,8 @@ public class BMIDataService {
     @Autowired
     private BMIDataRepository bMIDataRepository;
 
-    public List<BMIData> getAllBMIDatas() {
-        logger.info("Started getAllBMIDatas in BMIDataService");
+    public List<BMIData> getAllBMIData() {
+        logger.info("Started getAllBMIData in BMIDataService");
 
         return bMIDataRepository.findAll();
     }
@@ -34,7 +34,7 @@ public class BMIDataService {
         logger.info("Started createBMIData in BMIDataService");
 
         Optional<BMIData> bMIDataOptional = bMIDataRepository.findById(bMIData.getId());
-        if (!bMIDataOptional.isPresent()) {
+        if (bMIDataOptional.isEmpty()) {
             return bMIDataRepository.save(bMIData);
         }
         return bMIData;
@@ -44,7 +44,7 @@ public class BMIDataService {
         logger.info("Started updateBMIData in BMIDataService");
 
         Optional<BMIData> bMIDataOptional = bMIDataRepository.findById(bMIData.getId());
-        if (!bMIDataOptional.isPresent()) {
+        if (bMIDataOptional.isEmpty()) {
             return bMIDataRepository.save(bMIData);
         }
         return bMIData;

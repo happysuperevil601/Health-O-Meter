@@ -34,7 +34,7 @@ public class ContactService {
         logger.info("Started createContact in ContactService");
 
         Optional<Contact> contactOptional = contactRepository.findById(contact.getId());
-        if (!contactOptional.isPresent()) {
+        if (contactOptional.isEmpty()) {
             return contactRepository.save(contact);
         }
         return contact;
@@ -44,7 +44,7 @@ public class ContactService {
         logger.info("Started updateContact in ContactService");
 
         Optional<Contact> contactOptional = contactRepository.findById(contact.getId());
-        if (!contactOptional.isPresent()) {
+        if (contactOptional.isEmpty()) {
             return contactRepository.save(contact);
         }
         return contact;
@@ -55,5 +55,9 @@ public class ContactService {
 
         Contact deleteContact = contactRepository.findById(id).orElseThrow();
         contactRepository.delete(deleteContact);
+    }
+
+    public boolean existById(Contact contact){
+        return contactRepository.existsById(contactRepository.findById(contact.getId()).orElseThrow().getId());
     }
 }

@@ -1,5 +1,7 @@
 package com.superdevs.HealthOMeter.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -54,13 +56,16 @@ public class Contact {
     @OneToOne(mappedBy = "contact", fetch = FetchType.EAGER)
     private RFMData rfmData;
 
-    @OneToMany(mappedBy = "contact", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Set<BioMetricHistoricalData> bioMetricHistoricalData;
 
-    @OneToMany(mappedBy = "contact", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Set<HistoricalCalculatorsResults> historicalCalculatorsResults;
 
-    @OneToMany(mappedBy = "contact", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Set<HistoricalMedicalData> historicalMedicalData;
 
     public Contact() {

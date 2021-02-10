@@ -34,7 +34,7 @@ public class WHRDataService {
         logger.info("Started createWHRData in WHRDataService");
 
         Optional<WHRData> wHRDataOptional = wHRDataRepository.findById(wHRData.getId());
-        if (!wHRDataOptional.isPresent()) {
+        if (wHRDataOptional.isEmpty()) {
             return wHRDataRepository.save(wHRData);
         }
         return wHRData;
@@ -44,7 +44,7 @@ public class WHRDataService {
         logger.info("Started updateWHRData in WHRDataService");
 
         Optional<WHRData> wHRDataOptional = wHRDataRepository.findById(wHRData.getId());
-        if (!wHRDataOptional.isPresent()) {
+        if (wHRDataOptional.isEmpty()) {
             return wHRDataRepository.save(wHRData);
         }
         return wHRData;

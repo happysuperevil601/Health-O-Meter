@@ -17,8 +17,8 @@ public class BioMetricDataService {
     @Autowired
     private BioMetricDataRepository bioMetricDataRepository;
 
-    public List<BioMetricData> getAllBioMetricDatas() {
-        logger.info("Started getAllBioMetricDatas in BioMetricDataService");
+    public List<BioMetricData> getAllBioMetricData() {
+        logger.info("Started getAllBioMetricData in BioMetricDataService");
 
         return bioMetricDataRepository.findAll();
     }
@@ -33,7 +33,7 @@ public class BioMetricDataService {
         logger.info("Started createBioMetricData in BioMetricDataService");
 
         Optional<BioMetricData> bioMetricDataOptional = bioMetricDataRepository.findById(bioMetricData.getId());
-        if (!bioMetricDataOptional.isPresent()) {
+        if (bioMetricDataOptional.isEmpty()) {
             return bioMetricDataRepository.save(bioMetricData);
         }
         return bioMetricData;
@@ -43,7 +43,7 @@ public class BioMetricDataService {
         logger.info("Started updateBioMetricData in BioMetricDataService");
 
         Optional<BioMetricData> bioMetricDataOptional = bioMetricDataRepository.findById(bioMetricData.getId());
-        if (!bioMetricDataOptional.isPresent()) {
+        if (bioMetricDataOptional.isEmpty()) {
             return bioMetricDataRepository.save(bioMetricData);
         }
         return bioMetricData;
